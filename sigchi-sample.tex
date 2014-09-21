@@ -45,7 +45,7 @@
 % since its job is to redefine many LaTeX commands.
 \usepackage[pdftex]{hyperref}
 \hypersetup{
-pdftitle={SIGCHI Conference Proceedings Format},
+pdftitle={QuizCram: A Question-Directed Video Studying Interface},
 pdfauthor={LaTeX},
 pdfkeywords={SIGCHI, proceedings, archival format},
 bookmarksnumbered,
@@ -65,7 +65,9 @@ breaklinks=true,
 % End of preamble. Here it comes the document.
 \begin{document}
 
-\title{SIGCHI Conference Proceedings Format}
+\title{QuizCram: A Question-Directed Video Studying Interface}
+
+% supposed to be anonymized! don't put in the author names or affiliations
 
 \numberofauthors{3}
 \author{
@@ -89,12 +91,14 @@ breaklinks=true,
 \maketitle
 
 \begin{abstract}
-In this paper we describe the formatting requirements for
-SIGCHI Conference Proceedings, and this sample file
-offers recommendations on writing for the worldwide
-SIGCHI readership. Please review this document even if
-you have submitted to SIGCHI conferences before, some
-format details have changed relative to previous years.
+TODO less than 150 words
+
+% In this paper we describe the formatting requirements for
+% SIGCHI Conference Proceedings, and this sample file
+% offers recommendations on writing for the worldwide
+% SIGCHI readership. Please review this document even if
+% you have submitted to SIGCHI conferences before, some
+% format details have changed relative to previous years.
 \end{abstract}
 
 \keywords{
@@ -163,11 +167,24 @@ Our system attempts to make this more granular, making testing and quizzing at t
 
 \subsection{Pre-Testing Effect}
 
-Studies also find that 
+Lindsey E. Richland: The Pretesting Effect: Do Unsuccessful Retrieval Attempts Enhance Learning?
+% http://learninglab.uchicago.edu/Pre-Testing_files/RichlandKornellKao.pdf
 
 \subsection{Advance organizers: Video Transcript Summaries}
 
+Amy Pavel: Video Digests: A Browsable, Skimmable Format for Informational Lecture Videos
+% http://vis.berkeley.edu/papers/videodigests/
 
+\subsection{Visualizing progresss within videos}
+
+Robert Mertens: Social navigation in web lectures
+% http://dl.acm.org/citation.cfm?id=1149950
+
+Juho Kim: Data-Driven Interaction Techniques for Improving Navigation of Educational Videos
+% http://juhokim.com/files/UIST2014-LectureScape.pdf
+
+Abir Al-Hajri: Video Navigation with a Personal Viewing History
+% http://www.irit.fr/recherches/ICS/events/conferences/interact2013/papers/8119352.pdf
 
 \subsection{Spaced repetition: Flashcards}
 
@@ -175,27 +192,82 @@ Spaced repetition is a technique designed to help learners retain information by
 
 Similar to flashcards, our system also schedules items (questions and associated video clips) for review according to mastery and recency of review. One key difference is that lecture videos build on each other, so this is an additional constraint for scheduling: the user needs to have covered the previous videos. Another key difference is the cost of review: a user memorizing vocabulary using flashcards only needs to spend a few seconds on each flashcard, while answering a question or reviewing a video clip takes an order of magnitude more time. Hence, the user will make fewer review passes through the video content than they would with vocabulary flashcards.
 
+Integration and assessment of streaming video content and API development into a spaced repetition service
+% http://www.diva-portal.org/smash/get/diva2:703096/FULLTEXT01.pdf
 
 
 The relevant portion of the video is not indicated by the quiz: the portion being tested is obviously
+
+\subsection{Density of In-video Quiz Questions}
+
+Is there any related work for this?
 
 \section{System Design}
 
 QuizCram's interface shows users a question to review, with an associated video segment. The system includes features a recommendation system for suggesting questions to review, interface to help users track their progress in videos, 
 
+\subsection{Question-focused Video Viewing}
+
+For each section of the video in the course, we have one or more associated questions. We can get these question-video pairs automatically from existing videos with in-video quizzes, by associating the in-video quiz section with the immediately preceding video segment. For video segments that did not have an associated in-video quiz, we either automatically insert a generic ``How well did you understand this video'' question, (the format tested in our first study), or write a new question (the format tested in our second study).
+
+\begin{figure*}
+\centering
+\includegraphics[width=2.0\columnwidth]{singlevideo-overview}
+\caption{The QuizCram interface, showing the current video. The focus question is on left, and the associated video is on the right. The progressbar highlights the relevant portion of the video in yellow. Already-watched segments of previous sections is in blue, already-watched segments of the current part are in green. Because we are currently watching a section we have already viewed, an option to skip to the unseen portion is shown.}
+\label{fig:figure1}
+\end{figure*}
+
+Whenever the user advances to a new section, we show the question and video concurrently, with the question to the left of the video, as shown in Figure~\ref{fig:figure1}. The video does not autoplay, so that the user has time to read the question before they start watching the video. If the user already knows the answer, they can answer the question and move on to the next section. Even if the user does not already know the answer, reading the question before they watch the video serves as an advance organizer which summarizes the key points they should pay attention to when watching the video.
+
+Unlike in-video quizzes, which users are freely able to skip over, in QuizCram the user must correctly answer the question before they can move on to the next question and associated video segment. This is designed to ensure that users learn the material before advancing onwards, as opposed to simply passively watching the videos without testing themselves.
+
+Forcing users to answer the question may lead to frustration if the user is unable to determine the correct answer even after watching the video. Hence, whenever the user answers the question incorrectly, we provide them with immediate, informative feedback by showing the answers and providing an explanation, as opposed to the model used by Coursera where it states that the answer is incorrect, and only shows the explanation and correct answer after 3 tries. We made this design choice based on literature that finds that specific feedback that explains the correct answer to learners is more helpful and motivates them more than simply stating that their answer is incorrect \cite{formativefeedback}.
+
+\begin{figure*}
+\centering
+\includegraphics[width=2.0\columnwidth]{incorrect-responses2}
+\caption{In response to an incorrect response, the user is asked to view an additional 10\% of the video, the answer options are shuffled, and the user needs to re-answer the question correctly before moving on.}
+\label{fig:figure2}
+\end{figure*}
+
+Of course, immediately showing the answer in response to an incorrect answer leads to the risk that learners may choose to immediately reveal the answer without attempting to answer the question themselves. To discourage such behavior, even though we show the user the answer and explanation in response to an incorrect response, we do not advance them automatically. Rather, we shuffle the answer options and require them to view at least 10\% of the video segment, which is roughly 20 seconds, before attempting to answer it again, as shown in Figure~\ref{fig:figure2}. This viewing task encourages users to review the video, incentivizes users to answer questions correctly, and ensures they aren't simply storing the answers in short-term memory and reproducing them. Requiring users to review the video and then retesting them after an incorrect response creates an additional retrieval opportunity, which should improve retention of the material \cite{testingeffect}.
+
+While shuffling the answers and requiring video watching in response to an incorrect response discourages users from simply submitting the incorrect response and memorizing the answers, it does not entirely eliminate the risk. We can further discourage memorization of answers by having multiple questions for each video segment, which we alternate between. For example, in a algebra context we could simply ask the question again with different variable values whenever the user responds incorrectly. However, we did not use this option in our user studies since it would require us to write additional questions.
+
 \subsection{Scheduling Questions and Video Sections for Review}
 
-We want users to spend their study time focusing on material that they have not yet mastered. Hence, we assign each question a ``mastery score'', which represents how well the user currently knows the material, and show users the questions for which they have low mastery score. The question's mastery score is based on the following 3 factors:
+We want users to spend their study time focusing on material that they have not yet mastered. Hence, we assign each question a \emph{mastery score}, which represents how well the user currently knows the material, and show users the questions for which they have low mastery score. The question's mastery score is based on the following 3 factors:
 
 \begin{itemize}
-\item Past performance on question: Each time a user tries answering the question, we give them a score between 0 to 1 based on the percent of checkboxes they correctly checked (the questions in the course we used in our study were all multiple-check questions). We then do a weighted-mean of all historic scores, with each newer score assigned 3 times more weight than the previous score (so more recent performance is weighted more heavily). If the user has never answered the question before, this component has a score of 0.
-\item Fraction of associated video segment watched: For each section of video, we keep track of whether the user has ever watched it. This score is the number of seconds watched in the question's video segment, divided by the total length of that video segment.
-\item Recency of review: 1 / number of questions elapsed since this question was last seen by the user. If the question has never been seen, has a value of 0. This element of the score encourages spaced repetition for the questions. It also ensures that users are not shown the same questions repeatedly, which would make users bored.
+\item \emph{Past performance on question}: This element of the score encourages users to review questions they answered incorrectly. Each time a user tries answering the question, we give them a score between 0 to 1 based on the percent of checkboxes they correctly checked (the questions used in our study were all multiple-check questions). We then do a weighted-mean of all historic scores, with each newer score assigned 2 times more weight than the previous score (so more recent performance is weighted more heavily). For those video segments that have no associated question, we obtain this score by asking users to rate ``How well did you understand this video?''. If the user has never answered the question before, this has a default score of 0.
+\item \emph{Fraction of associated video segment watched}: This element of the score encourages users to view video segments they have not seen. For each section of video, we keep track of whether the user has ever watched it. This score is the number of seconds watched in the question's video segment, divided by the total length of that video segment.
+\item \emph{Recency of review}:  This element of the score encourages spaced repetition for the questions. It also ensures that users are not shown the same questions repeatedly, which would make users bored. It is equal to 1 / number of questions elapsed since this question was last seen by the user. If the question has never been seen, this has a default score of 0.
 \end{itemize}
 
-Whether dependent videos have been watched: Unlike flashcards, lecture videos build on each other, so each video segment has associated with it a set of dependent videos which need to be watched before we can understand the . In our course, each video depends on the preceding portion, so .
+The mastery score is a weighted sum of these factors, where question correctness is 4/7 of the score, fraction of the video watched is 2/7 of the score, and recency of review is 1/7 of the score. We assign question correctness the highest priority because users should all be able to answer the questions correctly, but some users may choose to not watch portions of video they consider irrelevant or already know.
 
-We want users to watch 
+Sorting by the mastery score alone does not enforce that users have met the prerequisites for understanding the video and answering the question, before we show them the video and question. Unlike flashcards, lecture videos are meant to be watched in order and build on each other, so each video segment has a set of prerequisite videos which need to be watched before students can understand them. In our implementation, we enforce prerequisites by requiring that the user has correctly answered the questions for preceding video segments, before we show them the next video segment and associated question.
+
+Sorting questions by mastery score and enforcing the prerequisites effectively results in users first being shown questions that work them through the videos in the order the course covers them, then asking them to review the questions they got low scores for and videos did not finish watching.
+
+\subsection{Timeline of previous questions and videos}
+
+\begin{figure*}
+\centering
+\includegraphics[width=2.0\columnwidth]{timeline}
+\caption{The timeline displays the past set of questions the user has answered. We list the correctness score and video progress scores to help users locate the questions they had difficulty with, and videos they have not yet fully watched.}
+\label{fig:figure3}
+\end{figure*}
+
+Although QuizCram focuses the user's attention towards the current question and associated video segment, we also wish to make it easy to refer to the previously answered video segments. This gives users finer granularity than simply listing the videos as Coursera does. As shown in Figure~\ref{fig:figure3}, the timeline displays the past set of questions that the user has answered, along with a minified version associated video, immediately below, so they can be conveniently accessed by scrolling down. Clicking on the video enlarges it to full-size and allows the user to rewatch it.
+
+\subsection{Visualizing progress through videos}
+
+With QuizCram, we hope to make reviewing more convenient than 
+
+\subsection{Visualizing progress through the material}
+
+
 
 \section{User Study 1}
 
@@ -296,14 +368,6 @@ On pages beyond the first, start at the top of the page and continue
 in double-column format.  The two columns on the last page should be
 of equal length.
 
-\begin{figure}[!h]
-\centering
-\includegraphics[width=0.9\columnwidth]{Figure1}
-\caption{With Caption Below, be sure to have a good resolution image
-  (see item D within the preparation instructions).}
-\label{fig:figure1}
-\end{figure}
-
 \subsection{References and Citations}
 
 Use a numbered list of references at the end of the article, ordered
@@ -369,14 +433,14 @@ will work fine.
 
 Place figures and tables at the top or bottom of the appropriate
 column or columns, on the same page as the relevant text
-(see Figure~\ref{fig:figure1}). A figure or table may extend across both
-columns to a maximum width of 17.78 cm (7 in.).
+%(see Figure~\ref{fig:figure1}). A figure or table may extend across both
+%columns to a maximum width of 17.78 cm (7 in.).
 
-Captions should be Times New Roman 9-point bold.  They should be numbered (e.g.,
-``Table~\ref{tab:table1}'' or ``Figure~\ref{fig:figure2}''), centered
-and placed beneath the figure or table.  Please note that the words
-``Figure'' and ``Table'' should be spelled out (e.g., ``Figure''
-rather than ``Fig.'') wherever they occur.
+%Captions should be Times New Roman 9-point bold.  They should be numbered (e.g.,
+%``Table~\ref{tab:table1}'' or ``Figure~\ref{fig:figure2}''), centered
+%and placed beneath the figure or table.  Please note that the words
+%``Figure'' and ``Table'' should be spelled out (e.g., ``Figure''
+%rather than ``Fig.'') wherever they occur.
 
 Papers and notes may use color figures, which are included in the page
 limit; the figures must be usable when printed in black and white in
