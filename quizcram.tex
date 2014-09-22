@@ -23,6 +23,8 @@
 \usepackage{times}    % comment if you want LaTeX's default font
 \usepackage{url}      % llt: nicely formatted URLs
 
+\usepackage{float}
+
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
 \def\url@leostyle{%
@@ -204,20 +206,20 @@ Is there any related work for this?
 
 \section{System Design}
 
-QuizCram's interface shows users a question to review, with an associated video segment. It also shows a scrollable timeline of previously answered questions and associated video segments below the current question. Questions are first scheduled in order, then once the user has made an initial pass, questions are selected for review algorithmically, based on historic correctness of responses, percentage of associated video that has been watched, and the recency of review. We also use the video progressbar to indicate the section of the video that is relevant to the current question, and portions of the video that the user has previously seen.
-
-An existing course with in-video quizzes, such as MOOCs on Coursera, can be automatically transformed into the QuizCram format. This results in each video segment having one associated question. However, unlike in-video quizzes, the QuizCram format is also suitable for having multiple questions associated with a single video segment.
-
-\subsection{Question-Focused Video Viewing}
-
-For each section of the video in the course, we have one or more associated questions. We can get these question-video pairs automatically from existing videos with in-video quizzes, by associating the in-video quiz section with the immediately preceding video segment. For video segments that did not have an associated in-video quiz, we either automatically insert a generic ``How well did you understand this video'' question, (the format tested in our first study), or write a new question (the format tested in our second study).
-
 \begin{figure*}
 \centering
 \includegraphics[width=2.0\columnwidth]{singlevideo-overview}
 \caption{The QuizCram interface, showing the current video. The focus question is on left, and the associated video is on the right. The progressbar highlights the relevant portion of the video in yellow. Already-watched segments of previous sections is in blue, already-watched segments of the current part are in green. Because we are currently watching a section we have already viewed, an option to skip to the unseen portion is shown.}
 \label{fig:figure1}
 \end{figure*}
+
+QuizCram's interface shows users a question to review, with an associated video segment, as shown in Figure~\ref{fig:figure1}. It also shows a scrollable timeline of previously answered questions and associated video segments below the current question. Questions are first scheduled in order, then once the user has made an initial pass, questions are selected for review algorithmically, based on historic correctness of responses, percentage of associated video that has been watched, and the recency of review. We also use the video progressbar to indicate the section of the video that is relevant to the current question, and portions of the video that the user has previously seen.
+
+An existing course with in-video quizzes, such as MOOCs on Coursera, can be automatically transformed into the QuizCram format. This results in each video segment having one associated question. However, unlike in-video quizzes, the QuizCram format is also suitable for having multiple questions associated with a single video segment.
+
+\subsection{Question-Focused Video Viewing}
+
+For each section of the video in the course, we have one or more associated questions. We can get these question-video pairs automatically from existing videos with in-video quizzes, by associating the in-video quiz section with the immediately preceding video segment. For video segments that did not have an associated in-video quiz, we either automatically insert a generic ``How well did you understand this video'' question, (the format tested in our first study), or write a new question (the format tested in our second study).
 
 Whenever the user advances to a new section, we show the question and video concurrently, with the question to the left of the video, as shown in Figure~\ref{fig:figure1}. The video does not autoplay, so that the user has time to read the question before they start watching the video. If the user already knows the answer, they can answer the question and move on to the next section. Even if the user does not already know the answer, reading the question before they watch the video serves as an advance organizer which summarizes the key points they should pay attention to when watching the video.
 
@@ -342,13 +344,21 @@ On the first day, users used one tool to watch the first half of Unit 1 (5 video
 On the second day, users filled out a set of exams in the order listed below:
 
 \begin{enumerate}
-\item Extra free-response questions (as described in the Materials section)
-\item Original in-video questions from Coursera
-\item Original unit exam from Coursera
-\item Extra multiple-checkbox questions (as described in the Materials section)
+\item Extra free-response questions (as described in the Materials section), both halves
+\item Original in-video questions from Coursera, both halves
+\item Original unit exam from Coursera, both halves
+\item Extra multiple-checkbox questions (as described in the Materials section), both halves
 \end{enumerate}
 
-Parts 2-4 of the exam were automatically graded, giving each question a score equal to the fraction of checkboxes correctly checked. The free-response questions, which were all of the general form ``State N facts about X'', were graded by marking each fact stated by students as correct or incorrect, then giving them a score of (number of correct facts written) / Max(number of facts requested by question, number of facts written). Thus, for a question requesting 2 facts, giving 1 correct fact gets a score of 1/2, giving 2 correct facts and 1 incorrect fact gets a score of 2/3, etc.
+Parts 2-4 of the exam were automatically graded, giving each question a score equal to the fraction of checkboxes correctly checked. The free-response questions, which were of the general form ``List N examples of X'' or ``State N facts about X'', were graded by marking each fact stated by students as correct or incorrect, then giving them a score of:
+
+\vspace{-4mm}
+
+\[ \frac{\# correct\ examples\ given}{Maximum(\# examples\ requested,\ \# examples\ given)} \]
+
+Thus, if a question requests 2 examples, giving 1 correct example gets a score of 1/2, giving 2 correct examples and 1 incorrect example gets a score of 2/3, etc.
+
+We chose this design of having users watch both sets of videos before taking any exams, as opposed to having them take an exam after they finished studying each section, because this way the user does not know that the exam includes the in-video questions, so this does not influence their study behavior. In pilot studies we had observed that if users know they will be tested on in-video questions, either by taking the exam or if we told them explicitly, they will devote time to explicitly study them and score extremely high on those parts of the exam, but not the rest of the exam. We instead chose our current study design so that we can observe the tool's effect on in-video question retention in natural study contexts where the user knows nothing about the exam.
 
 \subsubsection{Test Results}
 
