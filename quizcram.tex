@@ -317,35 +317,37 @@ Our first study was an within-subjects study that compared the automatically-gen
 
 
 
-\subsection{User Study 2}
+\section{Evaluation}
 
-Our second study was an within-subjects study that compared the QuizCram format with double the number of original questions (resulting from inserting additional questions into the video), to an in-video quiz interface with the original questions from Coursera. We wished to answer the questions:
+Our user study was an within-subjects study that compared users' studying behavior with QuizCram to an in-video quiz interface. We took the videos, in-video quizzes, and unit exam from an existing Neurobiology course on Coursera. The QuizCram condition was generated from the original in-video quizzes, but also included additional questions that we inserted. We wished to answer the questions:
 
 \begin{itemize}
-\item \textbf{Q1:} Do users using QuizCram better remember answers to the original in-video questions?
-\item \textbf{Q2:} Do users using QuizCram perform better on the unit quiz?
-\item \textbf{Q3:} Can we improve recall of particular facts from the video by inserting additional questions with QuizCram?
-\item \textbf{Q4:} Do users enjoy using QuizCram?
-\item \textbf{Q5:} How do users use QuizCram?
+\item Do users using QuizCram better remember answers to the original in-video questions?
+\item Do users using QuizCram perform better on the unit quiz?
+\item Can we improve recall of particular facts from the video by inserting additional questions with QuizCram?
+\item Do users find QuizCram helpful for studying videos?
+%\item How do users use QuizCram?
 %\item Do users using QuizCram answer questions more?
 %\item Do users using QuizCram re-answer questions more?
 \end{itemize}
 
-\subsubsection{Study Design}
+\subsection{Study Design}
 
 The study was a within-subjects design, where each learner used QuizCram and an in-video quiz viewer interface to study a set of videos. They were asked to provide qualitative feedback immediately after viewing, and were tested on the material they studied a day later.
 
-\subsubsection{Participants}
+\subsection{Participants}
 
-We recruited 18  students by posting on university mailing lists and job boards. 12 were female, 6 male, their average age was 21.7 (stddev=4.91, min=18, max=37), and all had native-level English proficiency. We asked specifically that they have no experience with neuroscience, to ensure that they did not know the material beforehand.  9 participants reported having previous experience with MOOCs, and of these 6 had experience with Coursera. Participants received \$60 for participating in the 2.5-hour online study.
+We recruited 18  students by posting on university mailing lists and job boards. 12 were female, 6 male, their average age was 21.7 (stddev=4.91, min=18, max=37), and all had native-level English proficiency. We asked specifically that they have no experience with neuroscience, to ensure that they did not know the material beforehand.  9 participants reported having previous experience with MOOCs, and of these 6 had experience with Coursera. Participants received \$60 for participating in the 2-hour online study.
 
-\subsubsection{Materials}
+\subsection{Materials}
+
+The course materials -- videos, in-video quizzes, and unit exams --- were the first and second halves of Unit 1 of an existing Neurobiology course on Coursera. We generated the initial QuizCram materials directly from the course. However, because we felt the question-to-video ratio in the original videos (9 questions for each 25-minute segment) was lower than we thought would be optimal for QuizCram, and because we wished to see the effects of inserting additional questions on recall of associated facts, we wrote additional questions for the QuizCram condition to double the total number of questions.
 
 We doubled the number of questions shown in the QuizCram condition by adding additional questions in the same style and format as the original multiple-checkbox in-video questions. We chose our questions carefully such that the answers were clearly stated in the video, but they would not ask the same facts that were tested on the unit exam or original in-video questions.
 
 We also wrote a set of free-response questions, one corresponding to each of our extra multiple-checkbox questions. For example, the question ``Which of the following are true of astrocytes?'' followed by 3 true options and 2 false options would be transformed into the free-response question ``List 3 facts about astrocytes''. We used these free-response questions to test whether users had actually learned the material tested by our new questions well enough to recall it, as opposed to simply learning to recognize the answers when presented in multiple-checkbox format.
 
-\subsubsection{Procedure}
+\subsection{Procedure}
 
 The study was conducted online over 2 days, with a 90-minute study section on the first day, and a 30-minute test section on the second day. Before users started the study, we informed them that they would be given 2 sets of videos, they should study them for 40 minutes apiece, and they would be given an exam on their contents in 24 hours. We did not tell them about the content of the exams.
 
@@ -370,309 +372,80 @@ Thus, if a question requests 2 examples, giving 1 correct example gets a score o
 
 We chose this design of having users watch both sets of videos before taking any exams, as opposed to having them take an exam after they finished studying each section, because this way the user does not know that the exam includes the in-video questions, so this does not influence their study behavior. In previous versions of this study we had observed that if users know they will be tested on in-video questions, either by taking the exam or if we told them, they will explicitly study them and will have near-perfect scores on those parts of the exam, but not the rest of the exam. We instead chose our current study design so that we can observe the tool's effect on in-video question retention in natural study contexts where the user knows nothing about the exam.
 
-\subsubsection{Test Results}
+\subsection{Exam Results}
 
-Users were better able to answer the original in-video questions when using QuizCram. They averaged 85.4\% correctness with QuizCram, compared to 81.3\% correctness with the in-video quiz format. A t-test showed this difference was statistically significant (t=2.24, p=0.0391). The average scores between the two halves were similar -- 84.5\% average for part 1, 82.2\% average for part 2, with no significant difference (t=0.55, p=0.589). Thus, even though the users encountered the original in-video questions in both conditions, the QuizCram format caused them to remember the answers better.
+\subsubsection{Exam Results for Original In-Video Questions}
+
+Users were better able to answer the original in-video questions when using QuizCram. They averaged 85.4\% with QuizCram, compared to 81.3\% with the in-video quiz format. A t-test showed this difference was statistically significant (t=2.24, p=0.0391). The average scores between in-video questions for the two halves were similar -- 84.5\% average for part 1, 82.2\% average for part 2, with no significant difference (t=0.55, p=0.589).
+
+Thus, even though the users encountered the original in-video questions in both conditions, the QuizCram format caused them to remember the answers better. We attribute this difference to the increased prominence of questions in the QuizCram interface, and requirement that questions be answered correctly by the users before proceeding onwards.
+
+\subsubsection{Exam Results for Unit Quiz}
+
+Unit quiz scores were similar when using QuizCram compared to the in-video condition. Average scores on the portion of questions covered by QuizCram was 65.1\%, while scores for the questions from the portion viewed using the in-video interface was 63.4\%. A t-test indicated no significant difference (t=0.44, p=0.669). Users performed slightly better on the questions from the second half of the unit exam: the average score was 59.2\% for questions covering the first half of the videos, and 69.3\% for questions covering the second half of videos (t=-1.98, p=0.064).
+
+This result is not unexpected, given that the unit quiz questions covered different concepts than those the in-video quizzes focused on, even though they were both covered in the videos. Our inserted questions likewise did not overlap with the unit quiz questions, to avoid giving QuizCram users an unfair advantage on the unit quiz. This suggests that even though QuizCram's question-centric viewing approach helps learners learn the concepts that are tested in the questions, it does not appear to help them with portions of the video that are not tested.
+
+\subsubsection{Exam Results for Extra and Free-Response Questions}
+
+Users were better able to answer the extra questions we inserted in the QuizCram condition when viewing the section with QuizCram. They averaged 85.5\% with QuizCram, compared to 76.0\% with the in-video interface. This difference was statistically significant (t=2.44, p=0.0260). This is to be expected: users had previously seen these questions if they were using QuizCram, but they were not shown to users in the in-video quiz condition.
 
 Users were also better able to answer the free-response questions when using QuizCram. They averaged 67.6\% correctness with QuizCram, compared to 49.0\% correctness with the in-video quiz format. A t-test showed this difference was statistically significant (t=3.95, p=0.0010). The average scores between the two halves were similar -- 59.4\% average for part 1, 57.1\% average for part 2, with no significant difference (t=0.35, p=0.731).
 
-Although the users who used QuizCram had never seen the free-response questions before, the questions asked similar material to the extra multiple-checkbox questions we had inserted for the QuizCram format, except in free-response format. 
+Although the users who used QuizCram had never seen the free-response questions before, the questions covered similar material to the extra multiple-checkbox questions we had inserted for the QuizCram format, except in free-response format. This suggests that when using QuizCram, users are not simply learning how to recognize the correct answers for questions, but are also learning to recall them. It also suggests that if there is a particular piece of information that the instructor would like the class to be able to recall, inserting it as an additional question into the QuizCram system is one possible way to accomplish this goal.
 
+\subsection{Survey Results}
 
+After users had used both tools, they responded with their preferences as follows:
 
-Users performed slightly better . The second part of the unit exam appeared to be easier than the first half -- the mean was 59\% for the first half, vs 69\% for the second half -- however, this difference was not statistically significant ().
+\begin{itemize}
+\item In response to ``Which tool would you rather use for studying?'', 9 (50\%) preferred QuizCram.
+\item In response to ``Which tool would you rather use for studying if you were preparing for an exam and were short on time?'', 11 (61\%) preferred QuizCram.
+\item In response to ``Which tool would you rather use for studying if wanted to remember the material long-term?'', 11 (61\%) preferred QuizCram.
+\end{itemize}
 
+When asked to rate ``Overall, I am satisfied with using this video viewing tool'' on a scale of 1 (strongly disagree) to 7 (strongly agree), the average was 5.28 for QuizCram, and 5.17 for the in-video quiz format. Hence, users appeared to be satisfied with both formats.
 
+When asked to list what they liked about each format, users said that they liked how QuizCram displayed the question alongside the video, they liked the question-based segmentation of the video, and mentioned that it was helpful for reviewing questions they had answered incorrectly:
 
-Thus, even though the users encountered the original in-video questions in both conditions, the QuizCram format caused them to remember the answers better.
+%\emph{It was a good fit for me to read and answer questions, while the video was playing. I appreciate how wrong answers were handled with information leading to correct answers.}
+
+\emph{I liked that it picked out the key information I should retain by asking me questions. It helped me decide what to focus on as I watched the video. The chunks were very manageable as well. I liked how it was broken up.}
+
+%\emph{It was easy to review the questions and quiz myself multiple times, and ultimately, the repetition aided my understanding of the material.}
+
+\emph{I liked how once I was done, and I still had time in my 40 min, then I could go back to videos where I'd gotten questions wrong the first time on the quiz and review. I liked that sometimes, if I got the questions wrong, then the answers were switched around forcing me to read the answers again.} 
+%Also, having the questions from the beginning made me focus more on the answers to the questions than listening to the whole lesson material. I made a game with myself out of seeing when I thought I knew enough to answer the questions (without listening to the whole video). Then I'd listen to the whole video afterward. 
+
+When asked to list what they disliked about each format, the primary complaints about QuizCram were that showing the question at all times distracted them from the video, and that it was not possible to skip ahead without answering questions:
+
+\emph{I felt compelled to answer the questions correctly instead of watching the video to absorb the information. Perhaps only being able to preview the question before watching the video and then having access to answer it afterwards would help.}
+
+%\subsection{Usage Patterns}
+
+%To see how users were interacting with the system, we logged interaction data during our study. We were particularly interested in observing how users used the system as a review tool. 
 
 \section{Discussion}
 
+% The design goal behind QuizCram is to increase users' focus on questions, utilizing questions as a means to navigate and review the video material. Our user study finds that QuizCram indeed does increase focus on questions -- when the questions presented during viewing were tested again a day later, users using QuizCram performed better at answering the questions than users who encountered the questions as in-video quizzes. Users' qualitative feedback likewise indicates that they felt questions were an important part of the system. Users were were divided in preferences between the QuizCram format and the standard in-video quiz format. Some users liked the question-directed viewing format and thought it was more engaging, though others thought the questions were distracting.
 
+The design goal behind QuizCram is to increase users' focus on questions, utilizing questions as a means to navigate and review the video material. Our user study focused on a short-term study task, modeling an exam-cramming scenario. In reality, however, we want to remember the contents of entire courses rather than single units, and need to study it across the period of months rather than hours. We believe the QuizCram format is well-suited for such use cases.
 
-This format is to be used for submissions that are
-published in the conference proceedings.  We wish to give
-this volume a consistent, high-quality appearance. We
-therefore ask that authors follow some simple
-guidelines. In essence, you should format your paper
-exactly like this document. The easiest way to do this is
-simply to download a template from the conference web
-site, and replace the content with your own material.
+When reviewing lectures with traditional interfaces, the user needs to keep track of what they remember and what they need to review. This may be an easy task if they are reviewing only an hour of video. However, when studying entire courses over the course of a month, a user can easily lose track of what their study progress was. Instead, QuizCram keeps track of users' historic performance on questions and video progress, and develops suggests for questions and associated segments of video to review. Thus, it relieves the user of the mental burden of needing to keep track of their study progress and determine what they need to review.
 
-\section{Page Size and Columns}
+Another interesting finding was that with QuizCram, we were able to increase the number of questions associated with a video segment without adversely effecting the user experience or exam performance. In fact, we find that users remember the material covered by these additional questions well enough to answer them in free-response format. This paves a way for further increasing the amount of testing that occurs within video content.
 
-On each page your material (not including the page number) should fit
-within a rectangle of 18 x 23.5 cm (7 x 9.25 in.), centered on a US
-letter page, beginning 1.9 cm (.75 in.) from the top of the page, with
-a .85 cm (.33 in.) space between two 8.4 cm (3.3 in.) columns.  Right
-margins should be justified, not ragged. Beware, especially when using
-this template on a Macintosh, Word can change these dimensions in
-unexpected ways. Please be sure that your PDF is US letter and not
-A4. If your PDF or paper are formatted for A4, the submission will be
-returned to you to fix.
+Current online courses have external problem sets and quizzes outside of the ones in videos, because they cannot test the content in sufficient depth using in-video quizzes. However, if we consider the engagement patterns of users with MOOCs, the majority of users are interacting only with the videos and never doing the problem sets or quizzes \cite{anderson2014engaging}. Thus, moving more of the course content out of external quizzes and making the video more interactive and question-oriented provides a way to benefit these viewers' learning by testing their knowledge, without removing them from the scaffolding of videos. By gradually moving along this trajectory of making videos more question-focused and recommending review material to users, online courses of the future could entirely eliminate their need for external problem sets and quizzes, and transform into video and question-based intelligent tutoring systems.
 
-\section{Typeset Text}
+% The design goal behind QuizCram is to increase users' focus on questions, utilizing questions as a means to navigate and review the video material. Our user study finds that QuizCram indeed does increase focus on questions -- when the questions presented during viewing were tested again a day later, users using QuizCram performed better at answering the questions than users who encountered the questions as in-video quizzes. Users' qualitative feedback likewise indicates that they felt questions were an important part of the system. Users were were divided in preferences between the QuizCram format and the standard in-video quiz format currently predominant in MOOCs. Some users liked the question-directed viewing format and thought it was more engaging, though others thought the questions were distracting.
 
-Prepare your submissions on a word processor or typesetter.  Please
-note that page layout may change slightly depending upon the printer
-you have specified.  \LaTeX\ sometimes will create overfull lines
-that extend into columns.  To attempt to combat this, the .cls
-file has a command, {\textbackslash}sloppy, that essentially asks
-\LaTeX\ to prefer underfull lines with extra whitespace.  For more
-details on this, and info on how to control it more finely, check out
-{\url{http://www.economics.utoronto.ca/osborne/latex/PMAKEUP.HTM}}.
-
-\subsection{Title and Authors}
-
-Your paper's title, authors and affiliations should run across the
-full width of the page in a single column 17.8 cm (7 in.) wide.  The
-title should be in Helvetica 18-point bold; use Arial if Helvetica is
-not available.  Authors' names should be in Times Roman 12-point bold,
-and affiliations in Times Roman 12-point.  For more than three authors,
-you may have to place some address information in a footnote, or in a named
-section at the end of your paper. Please use full international addresses and
-telephone dialing prefixes.  Leave one 10-pt line of white space below the last
-line of affiliations.
-
-\subsection{Abstract and Keywords}
-
-Every submission should begin with an abstract of about 150 words,
-followed by a set of keywords. The abstract and keywords should be
-placed in the left column of the first page under the left half of the
-title. The abstract should be a concise statement of the problem,
-approach and conclusions of the work described.  It should clearly
-state the paper's contribution to the field of HCI.
-
-The first set of keywords will be used to index the paper in the
-proceedings. The second set are used to catalogue the paper in the ACM
-Digital Library. The latter are entries from the ACM Classification
-System~\cite{acm_categories}.  In general, it should only be necessary
-to pick one or more of the H5 subcategories, see
-\url{http://www.acm.org/class/1998/ccs98.html}
-
-\subsection{Normal or Body Text}
-
-Please use a 10-point Times Roman font or, if this is unavailable,
-another proportional font with serifs, as close as possible in
-appearance to Times Roman 10-point. The Press 10-point font available
-to users of Script is a good substitute for Times Roman. If Times
-Roman is not available, try the font named Computer Modern Roman. On a
-Macintosh, use the font named Times and not Times New Roman. Please
-use sans-serif or non-proportional fonts only for special purposes,
-such as headings or source code text.
-
-\subsection{First Page Copyright Notice}
-
-Leave 3 cm (1.25 in.) of blank space for the copyright notice at the
-bottom of the left column of the first page. In this template a
-floating text box will automatically generate the required space. Note
-however that the text box is anchored to the \textbf{ABSTRACT}
-heading, so if that heading is deleted the text box will disappear as
-well.  You can replace the default copyright notice by uncommenting
-the {\textbackslash}toappear block at the beginning of the document
-and inserting your own text, for example, for versions under review.
-
-
-\subsection{Subsequent Pages}
-
-On pages beyond the first, start at the top of the page and continue
-in double-column format.  The two columns on the last page should be
-of equal length.
-
-\subsection{References and Citations}
-
-Use a numbered list of references at the end of the article, ordered
-alphabetically by first author, and referenced by numbers in brackets
-\cite{ethics,
-  Klemmer:2002:WSC:503376.503378,
-  Mather:2000:MUT,
-  Zellweger:2001:FAO:504216.504224}. For
-papers from conference proceedings, include the title of the paper and
-an abbreviated name of the conference (e.g., for Interact 2003
-proceedings, use \textit{Proc. Interact 2003}). Do not include the
-location of the conference or the exact date; do include the page
-numbers if available. See the examples of citations at the end of this
-document. Within this template file, use the \texttt{References} style
-for the text of your citation.
-
-Your references should be published materials accessible to the
-public.  Internal technical reports may be cited only if they are
-easily accessible (i.e., you provide the address for obtaining the
-report within your citation) and may be obtained by any reader for a
-nominal fee.  Proprietary information may not be cited. Private
-communications should be acknowledged in the main text, not referenced
-(e.g., ``[Robertson, personal communication]'').
-
-\begin{table}
-  \centering
-  \begin{tabular}{|c|c|c|}
-    \hline
-    \tabhead{Objects} &
-    \multicolumn{1}{|p{0.3\columnwidth}|}{\centering\tabhead{Caption --- pre-2002}} &
-    \multicolumn{1}{|p{0.4\columnwidth}|}{\centering\tabhead{Caption --- 2003 and afterwards}} \\
-    \hline
-    Tables & Above & Below \\
-    \hline
-    Figures & Below & Below \\
-    \hline
-  \end{tabular}
-  \caption{Table captions should be placed below the table.}
-  \label{tab:table1}
-\end{table}
-
-\section{Sections}
-
-The heading of a section should be in Helvetica 9-point bold, all in
-capitals. Use Arial if Helvetica is not available. Sections should
-not be numbered.
-
-\subsection{Subsections}
-
-Headings of subsections should be in Helvetica 9-point bold with
-initial letters capitalized.  For
-sub-sections and sub-subsections, a word like \emph{the} or \emph{of}
-is not capitalized unless it is the first word of the heading.)
-
-\subsubsection{Sub-subsections}
-
-Headings for sub-subsections should be in Helvetica 9-point italic
-with initial letters capitalized.  Standard {\textbackslash}section,
-{\textbackslash}subsection, and {\textbackslash}subsubsection commands
-will work fine.
-
-\section{Figures/Captions}
-
-Place figures and tables at the top or bottom of the appropriate
-column or columns, on the same page as the relevant text
-%(see Figure~\ref{fig:figure1}). A figure or table may extend across both
-%columns to a maximum width of 17.78 cm (7 in.).
-
-%Captions should be Times New Roman 9-point bold.  They should be numbered (e.g.,
-%``Table~\ref{tab:table1}'' or ``Figure~\ref{fig:figure2}''), centered
-%and placed beneath the figure or table.  Please note that the words
-%``Figure'' and ``Table'' should be spelled out (e.g., ``Figure''
-%rather than ``Fig.'') wherever they occur.
-
-Papers and notes may use color figures, which are included in the page
-limit; the figures must be usable when printed in black and white in
-the proceedings.  The paper may be accompanied by a short video figure
-up to five minutes in length.  However, the paper should stand on its
-own without the video figure, as the video may not be available to
-everyone who reads the paper.
-
-\section{Language, Style and Content}
-
-The written and spoken language of SIGCHI is English. Spelling and
-punctuation may use any dialect of English (e.g., British, Canadian,
-US, etc.) provided this is done consistently. Hyphenation is
-optional. To ensure suitability for an international audience, please
-pay attention to the following:
-
-\begin{itemize}
-\item Write in a straightforward style.
-\item Try to avoid long or complex sentence structures.
-\item Briefly define or explain all technical terms that may be
-  unfamiliar to readers.
-\item Explain all acronyms the first time they are used in your text---e.g.,
-``Digital Signal Processing (DSP)''.
-\item Explain local references (e.g., not everyone knows all city
-  names in a particular country).
-\item Explain ``insider'' comments. Ensure that your whole audience
-  understands any reference whose meaning you do not describe (e.g.,
-  do not assume that everyone has used a Macintosh or a particular
-  application).
-\item Explain colloquial language and puns. Understanding phrases like
-  ``red herring'' may require a local knowledge of English.  Humor and
-  irony are difficult to translate.
-\item Use unambiguous forms for culturally localized concepts, such as
-  times, dates, currencies and numbers (e.g., ``1-5-97'' or ``5/1/97''
-  may mean 5 January or 1 May, and ``seven o'clock'' may mean 7:00 am or
-  19:00).  For currencies, indicate equivalences---e.g., ``Participants
-  were paid 10,000 lire, or roughly \$5.''
-\item Be careful with the use of gender-specific pronouns (he, she)
-  and other gendered words (chairman, manpower, man-months). Use
-  inclusive language that is gender-neutral (e.g., she or he, they,
-  s/he, chair, staff, staff-hours,
-  person-years). See~\cite{Schwartz:1995:GBF} for further advice and
-  examples regarding gender and other personal attributes.
-\item If possible, use the full (extended) alphabetic character set
-  for names of persons, institutions, and places (e.g.,
-  Gr{\o}nb{\ae}k, Lafreni\'ere, S\'anchez, Universit{\"a}t,
-  Wei{\ss}enbach, Z{\"u}llighoven, \r{A}rhus, etc.).  These characters
-  are already included in most versions of Times, Helvetica, and Arial
-  fonts.
-\end{itemize}
-
-\section{Accessibility}
-The Executive Council of SIGCHI has committed to making SIGCHI conferences more inclusive for researchers, practitioners, and educators with disabilities. As a part of this goal, the all authors are asked to work on improving the accessibility of their submissions. Specifically, we encourage authors to carry out the following five steps:
-\begin{enumerate}
-	\item Add alternative text to all figures
-	\item Mark table headings
-	\item Add tags to the PDF
-	\item Verify the default language
-	\item Set the tab order to ``Use Document Structure''
-\end{enumerate}
-Unfortunately good tools do not yet exist to create tagged PDF files from Latex. LaTeX users will need to carry out all of the above steps in the PDF directly using Adobe Acrobat, after the PDF has been generated.
- 
-For more information and links to instructions and resources, please see:
-{\url{http://chi2014.acm.org/authors/guide-to-an-accessible-submission}}.
-
-\section{Page Numbering, Headers and Footers}
-Your final submission SHOULD NOT contain any footer or header string information 
-at the top or bottom of each page. The submissions will be paginated in a determined 
-order by the chairs and page numbers added to the pdf during the compiling, 
-indexing, and pagination processes.
-
-\section{Producing and Testing PDF Files}
-
-We recommend that you produce a PDF version of your submission well
-before the final deadline.  Your PDF file must be ACM DL
-Compliant. The requirements for an ACM Compliant PDF are available at:
-{\url{http://www.sheridanprinting.com/typedept/ACM-distilling-settings.htm}}.
-
-Test your PDF file by viewing or printing it with the same software we
-will use when we receive it, Adobe Acrobat Reader Version 7. This is
-widely available at no cost from~\cite{acrobat}.  Note that most
-reviewers will use a North American/European version of Acrobat
-reader, which cannot handle documents containing non-North American or
-non-European fonts (e.g. Asian fonts).  Please therefore do not use
-Asian fonts, and verify this by testing with a North American/European
-Acrobat reader (obtainable as above). Something as minor as including
-a space or punctuation character in a two-byte font can render a file
-unreadable.
-
-\section{Blind Review}
-
-For archival submissions, CHI requires a ``blind review.'' To prepare
-your submission for blind review, remove author and institutional
-identities in the title and header areas of the paper. You may also
-need to remove part or all of the Acknowledgments text.  Further
-suppression of identity in the body of the paper and references is
-left to the authors' discretion. For more details, see the submission
-guidelines and checklist for your submission category.
+% We were pleased to find that encountering questions in multiple-checkbox form in QuizCram caused users to remember the tested content sufficiently well that they were able to answer it in free-response format a day later. Likewise, we found that it is possible to double the question-to-video ratio in the context of QuizCram. This 
 
 \section{Conclusion}
 
-It is important that you write for the SIGCHI audience.  Please read
-previous years' Proceedings to understand the writing style and
-conventions that successful authors have used.  It is particularly
-important that you state clearly what you have done, not merely what
-you plan to do, and explain how your work is different from previously
-published work, i.e., what is the unique contribution that your work
-makes to the field?  Please consider what the reader will learn from
-your submission, and how they will find your work useful.  If you
-write with these questions in mind, your work is more likely to be
-successful, both in being accepted into the Conference, and in
-influencing the work of our field.
+We have presented QuizCram, a system that uses questions to direct users' video viewing. QuizCram breaks the video into segments associated with questions, and always shows a focus question alongside the video. The focus question serves as an advance organizer that directs the user's attention towards the key points in the video. QuizCram also encourages reviewing based on questions: it displays a timeline of questions previously answered and their associated videos. It also suggests users to review questions that they have not fully mastered once they have worked through the video content.
 
-\section{Acknowledgments}
-
-We thank CHI, PDC and CSCW volunteers, and all publications support
-and staff, who wrote and provided helpful comments on previous
-versions of this document.  Some of the references cited in this paper
-are included for illustrative purposes only.  \textbf{Don't forget
-to acknowledge funding sources as well}, so you don't wind up
-having to correct it later.
+The video is divided into segments associated with a question, and there is always  . Once uses. Courses in the QuizCram format can be generated from existing videos with in-video quizzes. However, the format is also flexible enough to accomodate the insertion of 
 
 % Balancing columns in a ref list is a bit of a pain because you
 % either use a hack like flushend or balance, or manually insert
@@ -694,11 +467,6 @@ having to correct it later.
 % Or, just remove \balance and give up on balancing the last page.
 %
 \balance
-
-\section{References format}
-References must be the same font size as other body text.
-% REFERENCES FORMAT
-% References must be the same font size as other body text.
 
 \bibliographystyle{acm-sigchi}
 \bibliography{quizcram}
