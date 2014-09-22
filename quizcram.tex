@@ -265,11 +265,22 @@ Although QuizCram focuses the user's attention towards the current question and 
 
 The timeline gives users the option to use a more traditional, self-directed reviewing strategy, in contrast to the flashcard-style reviewing that our question scheduling algorithm encourages. By organizing the list of previous video segments according to the associated question that users answered, this allows users to scan video segments with a more salient summary than just the title. Question-based video navigation also allows users to search at a higher granularity, as questions refer to a specific subsection of the video, while the title refers only to the entire video contents. Furthermore, re-reading the previously answered questions helps trigger the users' memory of the associated clip, giving learners another retrieval opportunity to solidify their memory of the video contents.
 
-\subsection{Directing Attention Within Videos}
+\subsection{Directing Attention to Parts of Video Relevant to Question}
 
-Standard in-video quiz viewers show the entire video at once. However, QuizCram shows only the part of the video relevant to answering the question, specifically, the start of the video up until the point where the question would be located (in an in-video context). We additionally highlight in yellow the section of the progressbar where question answer is located. For questions generated from in-video quizzes, this is the segment of the video that immediately preceded the in-video quiz, as shown in Figure~\ref{fig:figure1}. This is designed to focus the user's attention to the video segments that will help them answer the video.
+Standard in-video quiz viewers show the entire video at once. However, QuizCram shows only the part of the video relevant to answering the question, specifically, the start of the video up until the point where the question would be located (in an in-video context). We additionally highlight in yellow the section of the progressbar where question answer is located. This is designed to focus the user's attention to the portion of the video that will help them answer the question.
 
-In addition, because QuizCram encourages reviewing videos, we wish to make it easy for users to keep track of what parts they have already watched. Hence, we highlight on the progressbar the already-seen parts in green (if it is from the part of the video relevant to the current question), or blue (if it is from a previous part of the video). If the user is viewing a section that has already been watched, we show a button at the top-left of the video that allows them to skip to the unseen portion. Similar techniques for visualizing the user's video viewing history have been presented in the literature \cite{socialnavigation} \cite{lecturescape}, though our system adds the novel feature of allowing users to skip to the next unseen portion.
+\begin{figure*}
+\centering
+\includegraphics[width=2.0\columnwidth]{highlighting-relevant-portions}
+\caption{We highlight portions of the video that are relevant to the current question. This gives additional flexibility in question writing and placement: if the question depends on a portion of the video from a previous part, as in this example, we can highlight that section in the video progressbar to indicate that it is relevant to the current question}
+\label{fig:figure4}
+\end{figure*}
+
+For questions generated from in-video quizzes, we highlight the segment of the video that immediately precededs the in-video quiz to indicate that it is where the answer is found, as shown in Figure~\ref{fig:figure1}. However, because we can highlight any preceding portion of the video to indicate that it is relevant to the current question, this also allows us to have more flexibility in question writing and placement: we can place questions where they would fit most naturally, rather than immediately following the section where the answer is covered, as shown in Figure~\ref{fig:figure4}. This also enables us to have multiple questions that cover a single segment of video, without confusing users about where the answers to the questions are located.
+
+\subsection{Directing Attention to Unseen Parts of Videos}
+
+In addition, because QuizCram encourages reviewing videos, we wish to make it easy for users to keep track of what parts they have already watched. Hence, we highlight on the progressbar the already-seen parts in green (if it is from the current part of the video), or blue (if it is from a previous part of the video). If the user is viewing a section that has already been watched, we show a button at the top-left of the video that allows them to skip to the unseen portion. Similar techniques for visualizing the user's video viewing history have been presented in the literature \cite{socialnavigation} \cite{lecturescape}, though our system adds the novel feature of allowing users to skip to the next unseen portion.
 
 \section{User Study 1}
 
