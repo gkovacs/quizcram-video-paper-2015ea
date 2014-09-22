@@ -319,7 +319,17 @@ Our first study was an within-subjects study that compared the automatically-gen
 
 \subsection{User Study 2}
 
-Our second study was an within-subjects study that compared the QuizCram format with double the number of original questions (resulting from inserting additional questions into the video), to an in-video quiz interface with the original questions from Coursera.
+Our second study was an within-subjects study that compared the QuizCram format with double the number of original questions (resulting from inserting additional questions into the video), to an in-video quiz interface with the original questions from Coursera. We wished to answer the questions:
+
+\begin{itemize}
+\item \textbf{Q1:} Do users using QuizCram better remember answers to the original in-video questions?
+\item \textbf{Q2:} Do users using QuizCram perform better on the unit quiz?
+\item \textbf{Q3:} Can we improve recall of particular facts from the video by inserting additional questions with QuizCram?
+\item \textbf{Q4:} Do users enjoy using QuizCram?
+\item \textbf{Q5:} How do users use QuizCram?
+%\item Do users using QuizCram answer questions more?
+%\item Do users using QuizCram re-answer questions more?
+\end{itemize}
 
 \subsubsection{Study Design}
 
@@ -327,7 +337,7 @@ The study was a within-subjects design, where each learner used QuizCram and an 
 
 \subsubsection{Participants}
 
-We recruited FILLIN university students by posting on mailing lists and job boards. We asked specifically that they have no experience with neuroscience, to ensure that they did not know the material beforehand.  As an additional measure, we also asked them to define neuron and myelin sheath, and excluded participants who were able to correctly define both of them. FILLIN participants reported having previous experience with MOOCs. Participants received \$60 for their time.
+We recruited 18  students by posting on university mailing lists and job boards. 12 were female, 6 male, their average age was 21.7 (stddev=4.91, min=18, max=37), and all had native-level English proficiency. We asked specifically that they have no experience with neuroscience, to ensure that they did not know the material beforehand.  9 participants reported having previous experience with MOOCs, and of these 6 had experience with Coursera. Participants received \$60 for participating in the 2.5-hour online study.
 
 \subsubsection{Materials}
 
@@ -350,19 +360,31 @@ On the second day, users filled out a set of exams in the order listed below:
 \item Extra multiple-checkbox questions (as described in the Materials section), both halves
 \end{enumerate}
 
-Parts 2-4 of the exam were automatically graded, giving each question a score equal to the fraction of checkboxes correctly checked. The free-response questions, which were of the general form ``List N examples of X'' or ``State N facts about X'', were graded by marking each fact stated by students as correct or incorrect, then giving them a score of:
+Parts 2-4 of the exam were automatically graded, giving each question a score equal to the fraction of checkboxes correctly checked. The free-response questions, which were of the general form ``List N examples of X'' or ``State N facts about X'', were graded by first marking each example provided by students as correct or incorrect. Examples and facts did not need to be the same ones provided in the video -- so long as they were appropriate to the question and correct, they were marked as correct. Then, we scored each response via the formula:
 
 \vspace{-4mm}
 
 \[ \frac{\# correct\ examples\ given}{Maximum(\# examples\ requested,\ \# examples\ given)} \]
 
-Thus, if a question requests 2 examples, giving 1 correct example gets a score of 1/2, giving 2 correct examples and 1 incorrect example gets a score of 2/3, etc.
+Thus, if a question requests 2 examples, giving 1 correct example gets a score of 1/2, giving 2 correct examples and 1 incorrect example gets a score of 2/3, etc. The overall score for the free-response exam was the mean of these scores.
 
-We chose this design of having users watch both sets of videos before taking any exams, as opposed to having them take an exam after they finished studying each section, because this way the user does not know that the exam includes the in-video questions, so this does not influence their study behavior. In pilot studies we had observed that if users know they will be tested on in-video questions, either by taking the exam or if we told them explicitly, they will devote time to explicitly study them and score extremely high on those parts of the exam, but not the rest of the exam. We instead chose our current study design so that we can observe the tool's effect on in-video question retention in natural study contexts where the user knows nothing about the exam.
+We chose this design of having users watch both sets of videos before taking any exams, as opposed to having them take an exam after they finished studying each section, because this way the user does not know that the exam includes the in-video questions, so this does not influence their study behavior. In previous versions of this study we had observed that if users know they will be tested on in-video questions, either by taking the exam or if we told them, they will explicitly study them and will have near-perfect scores on those parts of the exam, but not the rest of the exam. We instead chose our current study design so that we can observe the tool's effect on in-video question retention in natural study contexts where the user knows nothing about the exam.
 
 \subsubsection{Test Results}
 
+Users were better able to answer the original in-video questions when using QuizCram. They averaged 85.4\% correctness with QuizCram, compared to 81.3\% correctness with the in-video quiz format. A t-test showed this difference was statistically significant (t=2.24, p=0.0391). The average scores between the two halves were similar -- 84.5\% average for part 1, 82.2\% average for part 2, with no significant difference (t=0.55, p=0.589). Thus, even though the users encountered the original in-video questions in both conditions, the QuizCram format caused them to remember the answers better.
 
+Users were also better able to answer the free-response questions when using QuizCram. They averaged 67.6\% correctness with QuizCram, compared to 49.0\% correctness with the in-video quiz format. A t-test showed this difference was statistically significant (t=3.95, p=0.0010). The average scores between the two halves were similar -- 59.4\% average for part 1, 57.1\% average for part 2, with no significant difference (t=0.35, p=0.731).
+
+Although the users who used QuizCram had never seen the free-response questions before, the questions asked similar material to the extra multiple-checkbox questions we had inserted for the QuizCram format, except in free-response format. 
+
+
+
+Users performed slightly better . The second part of the unit exam appeared to be easier than the first half -- the mean was 59\% for the first half, vs 69\% for the second half -- however, this difference was not statistically significant ().
+
+
+
+Thus, even though the users encountered the original in-video questions in both conditions, the QuizCram format caused them to remember the answers better.
 
 \section{Discussion}
 
