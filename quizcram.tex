@@ -204,9 +204,11 @@ Is there any related work for this?
 
 \section{System Design}
 
-QuizCram's interface shows users a question to review, with an associated video segment. The system includes features a recommendation system for suggesting questions to review, interface to help users track their progress in videos, 
+QuizCram's interface shows users a question to review, with an associated video segment. It also shows a scrollable timeline of previously answered questions and associated video segments below the current question. Questions are first scheduled in order, then once the user has made an initial pass, questions are selected for review algorithmically, based on historic correctness of responses, percentage of associated video that has been watched, and the recency of review. We also use the video progressbar to indicate the section of the video that is relevant to the current question, and portions of the video that the user has previously seen.
 
-\subsection{Question-focused Video Viewing}
+An existing course with in-video quizzes, such as MOOCs on Coursera, can be automatically transformed into the QuizCram format. This results in each video segment having one associated question. However, unlike in-video quizzes, the QuizCram format is also suitable for having multiple questions associated with a single video segment.
+
+\subsection{Question-Focused Video Viewing}
 
 For each section of the video in the course, we have one or more associated questions. We can get these question-video pairs automatically from existing videos with in-video quizzes, by associating the in-video quiz section with the immediately preceding video segment. For video segments that did not have an associated in-video quiz, we either automatically insert a generic ``How well did you understand this video'' question, (the format tested in our first study), or write a new question (the format tested in our second study).
 
@@ -230,7 +232,7 @@ Forcing users to answer the question may lead to frustration if the user is unab
 \label{fig:figure2}
 \end{figure*}
 
-Of course, immediately showing the answer in response to an incorrect answer leads to the risk that learners may choose to immediately reveal the answer without attempting to answer the question themselves. To discourage such behavior, even though we show the user the answer and explanation in response to an incorrect response, we do not advance them automatically. Rather, we shuffle the answer options and require them to view at least 10\% of the video segment, which is roughly 20 seconds, before attempting to answer it again, as shown in Figure~\ref{fig:figure2}. This viewing task encourages users to review the video, incentivizes users to answer questions correctly, and ensures they aren't simply storing the answers in short-term memory and reproducing them. Requiring users to review the video and then retesting them after an incorrect response creates an additional retrieval opportunity, which should improve retention of the material \cite{testingeffect}.
+Of course, immediately showing the answer in response to an incorrect answer leads to the risk that learners may choose to immediately reveal the answer without attempting to answer the question themselves. To discourage such behavior, even though we show the user the answer and explanation in response to an incorrect response, we do not advance them automatically. Rather, we shuffle the answer options and require them to view an additional 10\% of the video, which is roughly 20 seconds, before attempting to answer it again, as shown in Figure~\ref{fig:figure2}. We do not enforce the 10\% viewing requirement if the user has already watched over 75\% of the video. This viewing task encourages users to view unseen portions of the video, incentivizes users to answer questions correctly, and ensures they aren't simply storing the answers in short-term memory and reproducing them. Requiring users to view the video and then retesting them after an incorrect response creates an additional retrieval opportunity, which should improve retention of the material \cite{testingeffect}.
 
 While shuffling the answers and requiring video watching in response to an incorrect response discourages users from simply submitting the incorrect response and memorizing the answers, it does not entirely eliminate the risk. We can further discourage memorization of answers by having multiple questions for each video segment, which we alternate between. For example, in a algebra context we could simply ask the question again with different variable values whenever the user responds incorrectly. However, we did not use this option in our user studies since it would require us to write additional questions.
 
@@ -250,28 +252,26 @@ Sorting by the mastery score alone does not enforce that users have met the prer
 
 Sorting questions by mastery score and enforcing the prerequisites effectively results in users first being shown questions that work them through the videos in the order the course covers them, then asking them to review the questions they got low scores for and videos did not finish watching.
 
-\subsection{Timeline of previous questions and videos}
+\subsection{Timeline of Previous Questions and Videos}
 
 \begin{figure*}
 \centering
 \includegraphics[width=2.0\columnwidth]{timeline}
-\caption{The timeline displays the past set of questions the user has answered. We list the correctness score and video progress scores to help users locate the questions they had difficulty with, and videos they have not yet fully watched.}
+\caption{The scrollable timeline, shown immediately below the current question, displays the past set of questions the user has answered. We list the correctness score and video progress scores to help users locate the questions they had difficulty with, and videos they have not yet fully watched.}
 \label{fig:figure3}
 \end{figure*}
 
-Although QuizCram focuses the user's attention towards the current question and associated video segment, we also wish to make it easy to refer to the previously answered video segments. This gives users finer granularity than simply listing the videos as Coursera does. As shown in Figure~\ref{fig:figure3}, the timeline displays the past set of questions that the user has answered, along with a minified version associated video, immediately below, so they can be conveniently accessed by scrolling down. Clicking on the video enlarges it to full-size and allows the user to rewatch it.
+Although QuizCram focuses the user's attention towards the current question and associated video segment, we also wish to make it easy to refer back to the previously answered questions and video segments. Whenever a question is correctly answered, we insert the next question and associated video segment at the top of the interface, and push the existing questions down. This results in a scrollable visual history of the previously answered questions and videos which we call the \emph{timeline}, shown in Figure~\ref{fig:figure3}. The timeline displays the question and its answer and a miniaturized version of the video which can be clicked to enlarge it to full size and play it. The miniaturized video displays the frame the user left off at, so it serves both as a visual summary, and also allows users to easily resume viewing progress of previous videos. We also show the historic correctness of the user's answers to that question, and percentage of the video they have watched, to help users identify questions they had trouble with and videos they did not fully watch.
 
-\subsection{Visualizing progress through videos}
+The timeline gives users the option to use a more traditional, self-directed reviewing strategy, in contrast to the flashcard-style reviewing that our question scheduling algorithm encourages. By organizing the list of previous video segments according to the associated question that users answered, this allows users to scan video segments with a more salient summary than just the title. Question-based video navigation also allows users to search at a higher granularity, as questions refer to a specific subsection of the video, while the title refers only to the entire video contents. Furthermore, re-reading the previously answered questions helps trigger the users' memory of the associated clip, giving learners another retrieval opportunity to solidify their memory of the video contents.
 
-With QuizCram, we hope to make reviewing more convenient than 
+\subsection{Directing Attention Within Videos}
 
-\subsection{Visualizing progress through the material}
+Standard in-video quiz viewers show the entire video at once. However, QuizCram shows only the part of the video relevant to answering the question, specifically, the start of the video up until the point where the question would be located (in an in-video context). We additionally highlight in yellow the section of the progressbar where question answer is located. For questions generated from in-video quizzes, this is the segment of the video that immediately preceded the in-video quiz, as shown in Figure~\ref{fig:figure1}. This is designed to focus the user's attention to the video segments that will help them answer the video.
 
-
+In addition, because QuizCram encourages reviewing videos, we wish to make it easy for users to keep track of what parts they have already watched. Hence, we highlight on the progressbar the already-seen parts in green (if it is from the part of the video relevant to the current question), or blue (if it is from a previous part of the video). If the user is viewing a section that has already been watched, we show a button at the top-left of the video that allows them to skip to the unseen portion. Similar techniques for visualizing the user's video viewing history have been presented in the literature \cite{socialnavigation} \cite{lecturescape}, though our system adds the novel feature of allowing users to skip to the next unseen portion.
 
 \section{User Study 1}
-
-
 
 \section{User Study 2}
 
