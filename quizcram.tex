@@ -282,9 +282,77 @@ For questions generated from in-video quizzes, we highlight the segment of the v
 
 In addition, because QuizCram encourages reviewing videos, we wish to make it easy for users to keep track of what parts they have already watched. Hence, we highlight on the progressbar the already-seen parts in green (if it is from the current part of the video), or blue (if it is from a previous part of the video). If the user is viewing a section that has already been watched, we show a button at the top-left of the video that allows them to skip to the unseen portion. Similar techniques for visualizing the user's video viewing history have been presented in the literature \cite{socialnavigation} \cite{lecturescape}, though our system adds the novel feature of allowing users to skip to the next unseen portion.
 
-\section{User Study 1}
+\section{Evaluation}
 
-\section{User Study 2}
+\begin{figure}
+\centering
+\includegraphics[width=1.0\columnwidth]{invideo-interface}
+\caption{The in-video quiz format that served as our baseline. Left side lists videos, right side is a video viewer that shows the in-video quiz when reached. Locations of quizzes are indicated in red on the progressbar.}
+\label{fig:figure4}
+\end{figure}
+
+We conducted a pair of within-subject user studies that compared students' learning behavior using the QuizCram interface, compared to an in-video quiz format that imitates Coursera. The course materials -- videos, in-video quizzes, and unit exams --- were Units 1 and 2 of an existing Neurobiology course on Coursera.
+
+The first study tested the QuizCram format which results from a direct, algorithmic transformation from the original materials from Coursera. In the second study, we started with the results of this direct transformation, but then also inserted additional questions to see what the effects of doubling the question-to-video-content ratio would be with the QuizCram format.
+
+The questions we aimed to answer with these studies were:
+
+\begin{itemize}
+\item Do students prefer QuizCram or the in-video quiz format?
+\item Do students remember the questions presented along with videos better when using QuizCram?
+\end{itemize}
+
+
+\subsection{User Study 1}
+
+Our first study was an within-subjects study that compared the automatically-generated QuizCram format to an in-video quiz interface that imitates Coursera. We wished to answer the questions:
+
+\begin{itemize}
+\item Do users remember the questions better 
+\end{itemize}
+
+\subsubsection{Study Design}
+
+
+
+\subsection{User Study 2}
+
+Our second study was an within-subjects study that compared the QuizCram format with double the number of original questions (resulting from inserting additional questions into the video), to an in-video quiz interface with the original questions from Coursera.
+
+\subsubsection{Study Design}
+
+The study was a within-subjects design, where each learner used QuizCram and an in-video quiz viewer interface to study a set of videos. They were asked to provide qualitative feedback immediately after viewing, and were tested on the material they studied a day later.
+
+\subsubsection{Participants}
+
+We recruited FILLIN university students by posting on mailing lists and job boards. We asked specifically that they have no experience with neuroscience, to ensure that they did not know the material beforehand.  As an additional measure, we also asked them to define neuron and myelin sheath, and excluded participants who were able to correctly define both of them. FILLIN participants reported having previous experience with MOOCs. Participants received \$60 for their time.
+
+\subsubsection{Materials}
+
+We doubled the number of questions shown in the QuizCram condition by adding additional questions in the same style and format as the original multiple-checkbox in-video questions. We chose our questions carefully such that the answers were clearly stated in the video, but they would not ask the same facts that were tested on the unit exam or original in-video questions.
+
+We also wrote a set of free-response questions, one corresponding to each of our extra multiple-checkbox questions. For example, the question ``Which of the following are true of astrocytes?'' followed by 3 true options and 2 false options would be transformed into the free-response question ``List 3 facts about astrocytes''. We used these free-response questions to test whether users had actually learned the material tested by our new questions well enough to recall it, as opposed to simply learning to recognize the answers when presented in multiple-checkbox format.
+
+\subsubsection{Procedure}
+
+The study was conducted online over 2 days, with a 90-minute study section on the first day, and a 30-minute test section on the second day. Before users started the study, we informed them that they would be given 2 sets of videos, they should study them for 40 minutes apiece, and they would be given an exam on their contents in 24 hours. We did not tell them about the content of the exams.
+
+On the first day, users used one tool to watch the first half of Unit 1 (5 videos of length 23 minutes total). They were told after 40 minutes to fill out a survey about the tool. Then, they used the other tool to watch the second half of Unit 1 (5 videos of length 25 minutes total), and filled out the survey after 40 minutes of watching.
+
+On the second day, users filled out a set of exams in the order listed below:
+
+\begin{enumerate}
+\item Extra free-response questions (as described in the Materials section)
+\item Original in-video questions from Coursera
+\item Original unit exam from Coursera
+\item Extra multiple-checkbox questions (as described in the Materials section)
+\end{enumerate}
+
+Parts 2-4 of the exam were automatically graded, giving each question a score equal to the fraction of checkboxes correctly checked. The free-response questions, which were all of the general form ``State N facts about X'', were graded by marking each fact stated by students as correct or incorrect, then giving them a score of (number of correct facts written) / Max(number of facts requested by question, number of facts written). Thus, for a question requesting 2 facts, giving 1 correct fact gets a score of 1/2, giving 2 correct facts and 1 incorrect fact gets a score of 2/3, etc.
+
+\subsubsection{Test Results}
+
+
 
 \section{Discussion}
 
