@@ -1,94 +1,53 @@
-\documentclass{sigchi}
-
-% Use this command to override the default ACM copyright statement (e.g. for preprints). 
-% Consult the conference website for the camera-ready copyright statement.
-
+\documentclass{chi-ext}
+% Please be sure that you have the dependencies (i.e., additional LaTeX packages) to compile this example.
+% See http://personales.upv.es/luileito/chiext/
 
 %% EXAMPLE BEGIN -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
-% \toappear{Permission to make digital or hard copies of all or part of this work for personal or classroom use is 	granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org. \\
+% \copyrightinfo{Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org. \\
 % {\emph{CHI'14}}, April 26--May 1, 2014, Toronto, Canada. \\
 % Copyright \copyright~2014 ACM ISBN/14/04...\$15.00. \\
 % DOI string from ACM form confirmation}
 %% EXAMPLE END -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
 
-
-% Arabic page numbers for submission. 
-% Remove this line to eliminate page numbers for the camera ready copy
-% \pagenumbering{arabic}
-
-
-% Load basic packages
-\usepackage{balance}  % to better equalize the last page
-\usepackage{graphics} % for EPS, load graphicx instead
-\usepackage{times}    % comment if you want LaTeX's default font
-\usepackage{url}      % llt: nicely formatted URLs
-
-\usepackage{float}
-
-% llt: Define a global style for URLs, rather that the default one
-\makeatletter
-\def\url@leostyle{%
-  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\bf\ttfamily}}}
-\makeatother
-\urlstyle{leo}
-
-
-% To make various LaTeX processors do the right thing with page size.
-\def\pprw{8.5in}
-\def\pprh{11in}
-\special{papersize=\pprw,\pprh}
-\setlength{\paperwidth}{\pprw}
-\setlength{\paperheight}{\pprh}
-\setlength{\pdfpagewidth}{\pprw}
-\setlength{\pdfpageheight}{\pprh}
-
-% Make sure hyperref comes last of your loaded packages, 
-% to give it a fighting chance of not being over-written, 
-% since its job is to redefine many LaTeX commands.
-\usepackage[pdftex]{hyperref}
-\hypersetup{
-pdftitle={QuizCram: A Question-Directed Video Studying Interface},
-pdfauthor={LaTeX},
-pdfkeywords={SIGCHI, proceedings, archival format},
-bookmarksnumbered,
-pdfstartview={FitH},
-colorlinks,
-citecolor=black,
-filecolor=black,
-linkcolor=black,
-urlcolor=black,
-breaklinks=true,
-}
-
-% create a shortcut to typeset table headings
-\newcommand\tabhead[1]{\small\textbf{#1}}
-
-
-% End of preamble. Here it comes the document.
-\begin{document}
-
 \title{QuizCram: A Question-Directed Video Studying Interface}
 
-% supposed to be anonymized! don't put in the author names or affiliations
-
-\numberofauthors{3}
+\numberofauthors{1}
+% Notice how author names are alternately typesetted to appear ordered in 2-column format;
+% i.e., the first 4 autors on the first column and the other 4 auhors on the second column.
+% Actually, it's up to you to strictly adhere to this author notation.
 \author{
-  \alignauthor 1st Author Name\\
-    \affaddr{Affiliation}\\
-    \affaddr{Address}\\
-    \email{e-mail address}\\
-    \affaddr{Optional phone number}
-  \alignauthor 2nd Author Name\\
-    \affaddr{Affiliation}\\
-    \affaddr{Address}\\
-    \email{e-mail address}\\
-    \affaddr{Optional phone number}    
-  \alignauthor 3rd Author Name\\
-    \affaddr{Affiliation}\\
-    \affaddr{Address}\\
-    \email{e-mail address}\\
-    \affaddr{Optional phone number}
+  \alignauthor{
+  	\textbf{Geza Kovacs}\\
+  	\affaddr{Department of Computer Science, Stanford University}\\
+  	\email{geza@cs.stanford.edu}
+  }
 }
+
+% Paper metadata (use plain text, for PDF inclusion and later re-using, if desired)
+\def\plaintitle{QuizCram: A Question-Directed Video Studying Interface}
+\def\plainauthor{Geza Kovacs}
+\def\plainkeywords{video flashcards, lecture reviewing, in-video questions}
+\def\plaingeneralterms{video flashcards, lecture reviewing, in-video questions}
+
+\hypersetup{
+  % Your metadata go here
+  pdftitle={\plaintitle},
+  pdfauthor={\plainauthor},  
+  pdfkeywords={\plainkeywords},
+  pdfsubject={\plaingeneralterms},
+  % Quick access to color overriding:
+  %citecolor=black,
+  %linkcolor=black,
+  %menucolor=black,
+  %urlcolor=black,
+}
+
+\usepackage{graphicx}   % for EPS use the graphics package instead
+\usepackage{balance}    % useful for balancing the last columns
+\usepackage{bibspacing} % save vertical space in references
+
+
+\begin{document}
 
 \maketitle
 
@@ -104,26 +63,21 @@ though the format is flexible enough to accommodate multiple questions per video
 Our user study comparing QuizCram to in-video quizzes finds that users
 are better able to remember answers to questions that they encountered
 when using QuizCram.
-
-
-% In this paper we describe the formatting requirements for
-% SIGCHI Conference Proceedings, and this sample file
-% offers recommendations on writing for the worldwide
-% SIGCHI readership. Please review this document even if
-% you have submitted to SIGCHI conferences before, some
-% format details have changed relative to previous years.
 \end{abstract}
 
-\keywords{
-	video flashcards; lecture reviewing; in-video questions
-}
+\keywords{\plainkeywords}
+%\textcolor{red}{Optional section to be included in your final version.}
 
 \category{H.5.2.}{Information Interfaces and Presentation (e.g. HCI)}{Graphical User Interfaces}
+%See \cite{ACMCCS} 
+%See: \url{http://www.acm.org/about/class/1998/} 
+%for help using the ACM Classification system.
+%\textcolor{red}{Optional section to be included in your final version, but strongly encouraged.}
 
+
+% =============================================================================
 \section{Introduction}
-
-% Online courses on platforms such as Coursera feature \emph{in-video quizzes}, which are questions that users are asked to answer as they watch videos. While these are 
-
+% =============================================================================
 Online lectures focus heavily on viewing video content. However, a phenomenon known as the \emph{testing effect} shows that actively quizzing learners on the content is more effective for retention than simply having them passively watch videos \cite{testingeffect}. Platforms such as Coursera have in-video quizzes which bring the benefits of testing into the video context by asking the user a multiple-choice question at key points in the video about the content that they have just watched. However, in-video quizzes are still given relatively little focus: they are shown only after the relevant segment has been viewed, and are often skipped by users.
 
 Our system, Quiz-driven Video Cramming (QuizCram), attempts to make users focus more on questions that test the user, and helps direct their review process. To do so, we include the following features:
@@ -143,8 +97,9 @@ To evaluate the effectiveness of QuizCram for helping users study, we used a wit
 \item Users are satisfied with QuizCram, and find the interface features for answering questions and reviewing videos to be helpful.
 \end{itemize}
 
+% =============================================================================
 \section{Related Work}
-
+% =============================================================================
 We designed our system features around a set of phenomenon from the education literature, which are also exploited by many other systems.
 
 \subsection{Testing and Pre-Testing Effects}
@@ -162,9 +117,9 @@ Advance organizers are information presented prior to learning, that helps the l
 Spaced repetition is a technique designed to help learners retain information by having them review  items at regular intervals \cite{karpicke2011spaced}. A class of applications that exploit this are flashcards, where information is split into independent chunks that are scheduled for review based on factors such as mastery and recency of review. Flashcards can also have associated multimedia, such as video clips.
 
 Similar to flashcards, our system also schedules items for review according to mastery and recency of review. One key difference is that lecture videos build on each other, so this is an additional constraint for scheduling: the user needs to have covered the previous videos. Another key difference is the cost of review: a user memorizing vocabulary using flashcards only needs to spend a few seconds on each flashcard, while answering a question or reviewing a video clip takes an order of magnitude more time. Hence, the user will make fewer review passes through the video content than they would with vocabulary flashcards.
-
+% =============================================================================
 \section{System Design}
-
+% =============================================================================
 \begin{figure}
 \centering
 \includegraphics[width=1.0\columnwidth]{singlevideo-overview}
@@ -176,8 +131,10 @@ QuizCram's interface shows users a question to review, with an associated video 
 
 An existing course with in-video quizzes, such as MOOCs on Coursera, can be automatically transformed into the QuizCram format. This results in each video segment having one associated question. However, unlike in-video quizzes, the QuizCram format is also suitable for having multiple questions associated with a single video segment.
 
-\subsection{Question-Focused Video Viewing}
 
+% =============================================================================
+\subsection{Question-Focused Video Viewing}
+% =============================================================================
 For each section of the video in the course, we have one or more associated questions. We can get these question-video pairs automatically from existing videos with in-video quizzes, by associating the in-video quiz section with the immediately preceding video segment. For video segments that did not have an associated in-video quiz, we either automatically insert a generic ``How well did you understand this video'' question, or manually write a new question.
 
 Whenever the user advances to a new section, we show the question and video concurrently, with the question to the left of the video, as shown in Figure~\ref{fig:figure1}. The video does not autoplay, so that the user has time to read the question before they start watching the video. If the user already knows the answer, they can answer the question and move on to the next section. Even if the user does not already know the answer, reading the question before they watch the video serves as an advance organizer which summarizes the key points they should pay attention to when watching the video.
@@ -250,8 +207,9 @@ In addition, because QuizCram encourages reviewing videos, we wish to make it ea
 %\label{fig:figure5}
 %\end{figure}
 
+% =============================================================================
 \section{Evaluation}
-
+% =============================================================================
 Our user study was an within-subjects study that compared users' studying behavior with QuizCram to an in-video quiz interface that imitates the format used on Coursera, as shown in Figure~\ref{fig:figure4}. We took the videos, in-video quizzes, and unit exam from an existing Neurobiology course on Coursera. The QuizCram condition was generated from the original in-video quizzes, but also included additional questions that we inserted. We wished to answer the questions:
 
 \begin{itemize}
@@ -367,8 +325,10 @@ Users generally liked QuizCram's question-focused format:
 
 %To see how users were interacting with the system, we logged interaction data during our study. We were particularly interested in observing how users used the system as a review tool. 
 
-\section{Discussion}
 
+% =============================================================================
+\section{Discussion}
+% =============================================================================
 % The design goal behind QuizCram is to increase users' focus on questions, utilizing questions as a means to navigate and review the video material. Our user study finds that QuizCram indeed does increase focus on questions -- when the questions presented during viewing were tested again a day later, users using QuizCram performed better at answering the questions than users who encountered the questions as in-video quizzes. Users' qualitative feedback likewise indicates that they felt questions were an important part of the system. Users were were divided in preferences between the QuizCram format and the standard in-video quiz format. Some users liked the question-directed viewing format and thought it was more engaging, though others thought the questions were distracting.
 
 The design goal behind QuizCram is to increase users' focus on questions, utilizing questions as a means to navigate and review the video material. Our user study focused on a short-term study task, modeling an exam-cramming scenario. In reality, however, we want to remember the contents of entire courses rather than single units, and need to study it across the period of months rather than hours. We believe the QuizCram format is well-suited for such use cases.
@@ -383,8 +343,9 @@ Current online courses have external problem sets and quizzes outside of the one
 
 % We were pleased to find that encountering questions in multiple-checkbox form in QuizCram caused users to remember the tested content sufficiently well that they were able to answer it in free-response format a day later. Likewise, we found that it is possible to double the question-to-video ratio in the context of QuizCram. This 
 
+% =============================================================================
 \section{Conclusion}
-
+% =============================================================================
 We have presented QuizCram, a system that uses questions to direct users' video viewing. QuizCram breaks the video into segments associated with questions, and always shows a focus question alongside the video. The focus question serves as an advance organizer that directs the user's attention towards the key points in the video. QuizCram also encourages reviewing based on questions: it displays a timeline of questions previously answered and their associated videos. It keeps track of users' progress through questions and videos, and suggests users to review questions that they have not fully mastered. Courses in the QuizCram format can be automatically generated from existing video content with in-video quizzes, though it also has the flexibility to accommodate additional questions.
 
 Our user study finds that QuizCram indeed does increase focus on questions -- when the questions presented during viewing were tested again a day later, users using QuizCram performed better at answering the questions than users who encountered the questions as in-video quizzes. We also found that increasing the amount of questions presented with QuizCram results in users remembering the material tested by the additional questions better, even when answering based on recall not recognition.
@@ -393,27 +354,10 @@ Users' qualitative feedback indicates that they felt questions were an important
 
 % The video is divided into segments associated with a question, and there is always  . Once uses. Courses in the QuizCram format can be generated from existing videos with in-video quizzes. However, the format is also flexible enough to accomodate the insertion of 
 
-% Balancing columns in a ref list is a bit of a pain because you
-% either use a hack like flushend or balance, or manually insert
-% a column break.  http://www.tex.ac.uk/cgi-bin/texfaq2html?label=balance
-% multicols doesn't work because we're already in two-column mode,
-% and flushend isn't awesome, so I choose balance.  See this
-% for more info: http://cs.brown.edu/system/software/latex/doc/balance.pdf
-%
-% Note that in a perfect world balance wants to be in the first
-% column of the last page.
-%
-% If balance doesn't work for you, you can remove that and
-% hard-code a column break into the bbl file right before you
-% submit:
-%
-% http://stackoverflow.com/questions/2149854/how-to-manually-equalize-columns-
-% in-an-ieee-paper-if-using-bibtex
-%
-% Or, just remove \balance and give up on balancing the last page.
-%
 \balance
 
 \bibliographystyle{acm-sigchi}
 \bibliography{quizcram}
+\end{document}
+
 \end{document}
