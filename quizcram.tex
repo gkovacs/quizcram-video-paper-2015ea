@@ -48,6 +48,8 @@
 
 \usepackage[absolute]{textpos}
 
+\usepackage{paralist}
+
 \begin{document}
 
 \maketitle
@@ -109,23 +111,23 @@ Based on these observations, we wished to develop a video viewer that would bett
 
 Our system, Quiz-driven Video Cramming (QuizCram), uses quizzes to help users navigate the course, and helps direct their review process. To do so, we include the following features:
 
-\begin{itemize}
+\begin{compactitem}
 \item Our interface shows the question before and while the user watches the video, so that it serves as an advance organizer to prime them towards the key concepts they should focus on %while watching the video.
 % \item Our system provides useful feedback in response to an incorrect answer, encourages the user to review the relevant portion of the video, and enforces that users can answer the question on their own before advancing them to the next portion of the video.
 % \item To encourage people to review videos, our system keeps track of which video portions users need to review (using a score based on question scores on associated segments, percentage of the segment reviewed, and recency of reviewing), and gives them suggestions of questions and video portions to review once they have watched all the video segments.
 \item To encourage people to review videos, our system keeps track of which video portions users need to review, and gives users suggestions of questions and video portions to review %once they have watched all the video segments.
 \item We enable the more flexible addition of questions into the video, by allowing questions depend on video segments other than just the immediately preceding one. This allows for there to be a higher density of questions in the QuizCram format.
-\end{itemize}
+\end{compactitem}
 
 We used a within-subjects study to compare QuizCram to the in-video quiz format. We found:
 
 % To evaluate the effectiveness of QuizCram for helping users study, we used a within-subjects study design comparing it to an in-video quiz format. Our contributions are:
 
-\begin{itemize}
+\begin{compactitem}
 % \item QuizCram, a format for viewing lectures in an interactive, question-centric manner, that can be automatically generated from existing videos with in-video quizzes.
 \item Answers to in-video questions are remembered significantly better when users are using QuizCram, compared in-video quizzes
 \item Users are satisfied with QuizCram, and find the interface features for answering questions and reviewing videos to be helpful.
-\end{itemize}
+\end{compactitem}
 
 % =============================================================================
 \section{Related Work}
@@ -152,7 +154,7 @@ Spaced repetition is a technique designed to help learners retain information by
 
 % Similar to flashcards, our system also schedules items for review according to mastery and recency of review. One key difference is that lecture videos build on each other, so this is an additional constraint for scheduling: the user needs to have covered the previous videos. % Another key difference is the cost of review: a user memorizing vocabulary using flashcards only needs to spend a few seconds on each flashcard, while answering a question or reviewing a video clip takes an order of magnitude more time. Hence, the user will make fewer review passes through the video content than they would with vocabulary flashcards.
 % =============================================================================
-\section{System Design}
+
 % =============================================================================
 %\begin{figure}
 %\centering
@@ -161,24 +163,27 @@ Spaced repetition is a technique designed to help learners retain information by
 %\label{fig:figure1}
 %\end{figure}
 
+\section{System Design}
+
+% QuizCram's interface shows users a question to review, with an associated video segment, as shown in \autoref{fig:figure3}. It also shows a scrollable timeline of previously answered questions and associated video segments below the current question. Questions are first scheduled in order, then once the user has made an initial pass, questions are selected for review algorithmically, based on historic correctness of responses, percentage of associated video that has been watched, and the recency of review. We also use the video progressbar to indicate the section of the video that is relevant to the current question, and portions of the video that the user has previously seen.
+
+QuizCram's interface displays a question and associated video segment, as shown in \autoref{fig:figure3}. It also shows a timeline of previous questions and video segments below the current question. Once the user has made an initial pass through the questions, we suggest questions that they should review. We use the video progressbar to indicate the section of the video that is relevant to the current question, and portions that the user has previously seen.
+
 \begin{figure}
 \centering
 \includegraphics[width=1.0\columnwidth]{quizcram-and-timeline2}
-\caption{The scrollable timeline, shown immediately below the current question, displays the past videos and associated questions, to help users find parts they had trouble with.}
+\caption{The scrollable timeline, shown below the current question, displays the past videos and associated questions, to help users review parts they had trouble with.}
 \label{fig:figure3}
 \end{figure}
 
-QuizCram's interface shows users a question to review, with an associated video segment, as shown in \autoref{fig:figure3}. It also shows a scrollable timeline of previously answered questions and associated video segments below the current question. Questions are first scheduled in order, then once the user has made an initial pass, questions are selected for review algorithmically, based on historic correctness of responses, percentage of associated video that has been watched, and the recency of review. We also use the video progressbar to indicate the section of the video that is relevant to the current question, and portions of the video that the user has previously seen.
-
 An existing course with in-video quizzes, such as MOOCs on Coursera, can be automatically transformed into the QuizCram format. This results in each video segment having one associated question. However, unlike in-video quizzes, the QuizCram format can also have multiple questions associated with a single video segment.
-
 
 % =============================================================================
 \subsection{Question-Focused Video Viewing}
 % =============================================================================
 % For each section of the video in the course, we have one or more associated questions. We can get these question-video pairs automatically from existing videos with in-video quizzes, by associating the in-video quiz section with the immediately preceding video segment. For video segments that did not have an associated in-video quiz, we can either automatically insert a generic ``How well did you understand this video'' question, or manually write a new question.
 
-Each section of the video in the course has one or more associated questions. Whenever the user advances to a new section, we show the question and video concurrently, with the question to the left of the video, as shown in \autoref{fig:figure3}. If the user already knows the answer, they can answer the question and move on to the next section. Even if the user does not  know the answer, reading the question before watching the video serves as an advance organizer which summarizes the key points they should pay attention to when watching the video.
+Each section of the video in the course is displayed with an associated question, as shown in \autoref{fig:figure3}. The question is designed to help users decide whether they should watch the video: if the user already knows the answer, they can answer the question and move to the next section. Even if the user does not  know the answer, reading the question summarizes the key points they should pay attention to when watching the video.
 
 % Unlike in-video quizzes, which users are freely able to skip over, in QuizCram the user must correctly answer the question before they can move on to the next question and associated video segment. This is designed to ensure that users learn the material before advancing onwards, as opposed to simply passively watching the videos without testing themselves.
 
@@ -194,6 +199,12 @@ Each section of the video in the course has one or more associated questions. Wh
 % Of course, immediately showing the answer in response to an incorrect answer leads to the risk that learners may choose to immediately reveal the answer without attempting to answer the question themselves. To discourage such behavior, even though we show the user the answer and explanation in response to an incorrect response, we do not advance them automatically. Rather, we shuffle the answer options and require them to view an additional 10\% of the video, which is roughly 20 seconds, before attempting to answer it again, as shown in \autoref{fig:figure2}. We do not enforce the 10\% viewing requirement if the user has already watched over 75\% of the video. This viewing task encourages users to view unseen portions of the video, incentivizes users to answer questions correctly, and ensures they aren't simply storing the answers in short-term memory and reproducing them. Requiring users to view the video and then retesting them after an incorrect response creates an additional retrieval opportunity, which should improve retention of the material \cite{testingeffect}.
 
 % While shuffling the answers and requiring video watching in response to an incorrect response discourages users from simply submitting the incorrect response and memorizing the answers, it does not entirely eliminate the risk. We can further discourage memorization of answers by having multiple questions for each video segment, which we alternate between. For example, in a algebra context we could simply ask the question again with different variable values whenever the user responds incorrectly. However, we did not use this option in our user studies since it would require us to write additional questions.
+
+\subsection{Timeline of Previous Questions and Videos}
+
+Although QuizCram focuses the user's attention towards the current question and associated video segment, we also wish to make it easy to refer back to the previously answered questions and video segments. Whenever a question is correctly answered, we insert the next question and associated video segment at the top of the interface, and push the existing questions down. This results in a scrollable visual history of the previously answered questions and videos which we call the \emph{timeline}, shown in \autoref{fig:figure3}. The timeline displays the question and its answer and a miniaturized version of the video which can be clicked to enlarge it to full size and play it. The miniaturized video displays the frame the user left off at, so it serves both as a visual summary, and also allows users to easily resume viewing progress of previous videos. % We also show the historic correctness of the user's answers to that question, and percentage of the video they have watched, to help users identify questions they had trouble with and videos they did not fully watch.
+
+The timeline gives users the option to use a more traditional, self-directed reviewing strategy, in contrast to the flashcard-style reviewing that our question scheduling algorithm encourages. By organizing the list of previous video segments according to the associated question that users answered, this allows users to scan video segments with a more salient summary than just the title. Question-based video navigation also allows users to search at a higher granularity, as questions refer to a specific subsection of the video, while the title refers only to the entire video contents. Furthermore, re-reading the previously answered questions helps trigger the users' memory of the associated clip, giving learners another retrieval opportunity to solidify their memory of the video contents.
 
 \subsection{Scheduling Questions and Video Sections for Review}
 
@@ -215,12 +226,6 @@ Once the user has seen all the questions in the unit, QuizCram encourages them t
 
 % Sorting questions by mastery score and enforcing the prerequisites effectively results in users first being shown questions that work them through the videos in the order the course covers them, then asking them to review the questions they got low scores for and videos did not finish watching.
 
-\subsection{Timeline of Previous Questions and Videos}
-
-Although QuizCram focuses the user's attention towards the current question and associated video segment, we also wish to make it easy to refer back to the previously answered questions and video segments. Whenever a question is correctly answered, we insert the next question and associated video segment at the top of the interface, and push the existing questions down. This results in a scrollable visual history of the previously answered questions and videos which we call the \emph{timeline}, shown in \autoref{fig:figure3}. The timeline displays the question and its answer and a miniaturized version of the video which can be clicked to enlarge it to full size and play it. The miniaturized video displays the frame the user left off at, so it serves both as a visual summary, and also allows users to easily resume viewing progress of previous videos. % We also show the historic correctness of the user's answers to that question, and percentage of the video they have watched, to help users identify questions they had trouble with and videos they did not fully watch.
-
-The timeline gives users the option to use a more traditional, self-directed reviewing strategy, in contrast to the flashcard-style reviewing that our question scheduling algorithm encourages. By organizing the list of previous video segments according to the associated question that users answered, this allows users to scan video segments with a more salient summary than just the title. Question-based video navigation also allows users to search at a higher granularity, as questions refer to a specific subsection of the video, while the title refers only to the entire video contents. Furthermore, re-reading the previously answered questions helps trigger the users' memory of the associated clip, giving learners another retrieval opportunity to solidify their memory of the video contents.
-
 % \subsection{Directing Attention to Parts of Video Relevant to Question}
 
 % Standard in-video quiz viewers show the entire video at once. However, QuizCram shows only the part of the video relevant to answering the question, specifically, the start of the video up until the point where the question would be located (in an in-video context). We additionally highlight in yellow the section of the progressbar where question answer is located. This is designed to focus the user's attention to the portion of the video that will help them answer the question.
@@ -238,29 +243,29 @@ The timeline gives users the option to use a more traditional, self-directed rev
 
 \subsection{Directing Attention to Unseen Parts of Videos}
 
-In addition, because QuizCram encourages reviewing videos, we wish to make it easy for users to keep track of what parts they have already watched. Hence, we highlight on the progressbar the already-seen parts in green (if it is from the current part of the video), or blue (if it is from a previous part of the video). If the user is viewing a section that has already been watched, we show a button at the top-left of the video that allows them to skip to the unseen portion. Similar techniques for visualizing the user's video viewing history have been presented in the literature \cite{socialnavigation} \cite{lecturescape}, though our system adds the novel feature of allowing users to skip to the next unseen portion.
+In addition, because QuizCram encourages reviewing videos, we wish to make it easy for users to keep track of what parts they have already watched. Hence, we highlight on the progressbar the portions that have already been seen. If the user is viewing a section they have already watched, we show a button at the top-left of the video that allows them to skip to the unseen portion. Similar techniques for visualizing the user's video viewing history have been presented in the literature \cite{socialnavigation} \cite{lecturescape}, though our system adds the novel feature of allowing users to skip to the next unseen portion.
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\columnwidth]{invideo-interface}
-\caption{The in-video quiz format that served as our baseline. Left side lists videos, right side is a video viewer that shows the in-video quiz when reached. Locations of quizzes are indicated in red on the progressbar.}
-\label{fig:figure5}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[width=1.0\columnwidth]{invideo-interface}
+%\caption{The in-video quiz format that served as our baseline. Locations of quizzes are indicated in red on the progressbar.}
+%\label{fig:figure5}
+%\end{figure}
 
 % =============================================================================
 \section{Evaluation}
 % =============================================================================
-Our user study was an within-subjects study that compared users' studying behavior with QuizCram to an in-video quiz interface that imitates the format used on Coursera, as shown in \autoref{fig:figure5}. We took the videos, in-video quizzes, and unit exam from an existing Neurobiology course on Coursera. The QuizCram condition was generated from the original in-video quizzes, but also included additional questions that we inserted. We wished to answer the questions:
+Our user study was an within-subjects study that compared users' studying behavior with QuizCram to an in-video quiz interface that imitates the format used on Coursera. We took the videos, in-video quizzes, and unit exam from the Neurobiology course on Coursera. We wished to answer the questions:
 
-\begin{itemize}
+\begin{compactitem}
 \item Do users using QuizCram better remember answers to the original in-video questions?
 \item Do users using QuizCram perform better on the unit quiz?
-\item Can we improve recall of particular facts from the video by inserting additional questions with QuizCram?
+\item Can we improve recall of particular facts from the video by adding extra questions with QuizCram?
 \item Do users find QuizCram helpful for studying videos?
 %\item How do users use QuizCram?
 %\item Do users using QuizCram answer questions more?
 %\item Do users using QuizCram re-answer questions more?
-\end{itemize}
+\end{compactitem}
 
 \subsection{Study Design}
 
@@ -276,7 +281,7 @@ We recruited 18  students by posting on university mailing lists. 12 were female
 
 % We doubled the number of questions shown in the QuizCram condition by adding additional questions in the same style and format as the original multiple-checkbox in-video questions. We chose our questions carefully such that the answers were clearly stated in the video, but they would not ask the same facts that were tested on the unit exam or original in-video questions.
 
-The course materials -- videos, in-video quizzes, and unit exams --- were the first and second halves of Unit 1 of an existing Neurobiology course on Coursera. There were 9 questions for each 25-minute segment. We generated the initial QuizCram materials directly from the course. Because we wished to observe the effects of increasing the question-to-video ratio in the original videos, we wrote additional questions for the QuizCram condition to double the total number of questions. We wrote questions in the same multiple-checkbox format as the original questions, and made sure that they did not ask the same facts that were tested on the unit exam or in-video questions.
+The videos, in-video quizzes, and unit exams were the first and second halves of Unit 1 of the Neurobiology course on Coursera. There were 9 questions and 5 videos for each 25-minute segment. We generated the initial QuizCram materials directly from the course. To see whether we could improve the recall of particular facts by adding questions, we added extra questions to the QuizCram condition to double the total number of questions. The extra questions were in the same multiple-checkbox format as the original questions, and we made sure that they did not ask the same facts that were tested on the unit exam or in-video questions.
 
 We also wrote a set of free-response questions, one corresponding to each of the extra multiple-checkbox questions. We used these free-response questions to test whether users had learned the material tested by in-video questions well enough to recall it.
 
@@ -284,20 +289,18 @@ We also wrote a set of free-response questions, one corresponding to each of the
 
 \subsection{Procedure}
 
-The study was conducted online over 2 days, with a 90-minute study session on the first day, and a 30-minute test session on the second day. Before users started the study, we informed them that they would be given 2 sets of videos, they should study them for 40 minutes apiece, and they would be given an exam the next day. We did not tell them about the content of the exams.
+The study was conducted online over 2 days, with a 90-minute study session on the first day, and a 30-minute test session on the second day. % Before users started the study, we informed them that they would be given 2 sets of videos, they should study them for 40 minutes apiece, and they would be given an exam the next day. % We did not tell them about the content of the exams.
 
-On the first day, users studied the first unit (5 videos, 23 minutes total) with the first tool for 40 minutes. Then, they used the other tool to study the second unit (5 videos, 25 minutes total) with the second tool for 40 minutes, and filled out a survey.
+On day 1, users were given 40 minutes to study the first section with the first tool. Then, they used the other tool to study the second section for 40 minutes, and filled out a survey. On day 2, users took the following exams:
 
 % On the first day, users used one tool to watch the first half of Unit 1 (5 videos of length 23 minutes total). They were told after 40 minutes to fill out a survey about the tool. Then, they used the other tool to watch the second half of Unit 1 (5 videos of length 25 minutes total), and filled out the survey after 40 minutes of watching.
 
-On the second day, users took the following exams: % in the order listed below:
-
-\begin{enumerate}
-\item Extra free-response questions (as described in the Materials section)%, both halves
+\begin{compactenum}
+\item Extra free-response questions %, both halves
 \item Original in-video questions from Coursera%, both halves
 \item Original unit exam from Coursera%, both halves
-\item Extra multiple-checkbox questions (as described in the Materials section)%, both halves
-\end{enumerate}
+\item Extra multiple-checkbox questions %, both halves
+\end{compactenum}
 
 Parts 2-4 of the exam were automatically graded, giving each question a score equal to the fraction of checkboxes correctly checked. % The free-response questions, which were of the general form ``List N examples of X'' or ``State N facts about X'', were graded by first marking each example provided by students as correct or incorrect. % Examples and facts did not need to be the same ones provided in the video -- so long as they were appropriate to the question and correct, they were marked as correct.
 % Then, we scored each response via the formula:
@@ -313,23 +316,32 @@ The free-response questions, which were of the form ``List N examples of X'' or 
 
 \subsection{Exam Results}
 
+Exam results are shown in \autoref{fig:exam-results}.  Users using QuizCram performed significantly better at answering the original in-video questions. We attribute this difference to the increased prominence of questions in the QuizCram interface. They also performed better at the extra questions, both multiple-choice and free-response, which suggests that we can use added questions in QuizCram to improve retention of particular facts from the video.
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\columnwidth]{exam-results}
+\caption{Exam results}
+\label{fig:exam-results}
+\end{figure}
+
 % \subsubsection{Exam Results for Original In-Video Questions}
 
-Users were better able to answer the original in-video questions when using QuizCram. They averaged 85.4\% with QuizCram, compared to 81.3\% with the in-video quiz format. This difference was statistically significant (t=2.24, p=0.0391). % The average scores between in-video questions for the two halves were similar -- 84.5\% average for part 1, 82.2\% average for part 2, with no significant difference (t=0.55, p=0.589).
+% Users were better able to answer the original in-video questions when using QuizCram. They averaged 85.4\% with QuizCram, compared to 81.3\% with the in-video quiz format. This difference was statistically significant (t=2.24, p=0.0391). % The average scores between in-video questions for the two halves were similar -- 84.5\% average for part 1, 82.2\% average for part 2, with no significant difference (t=0.55, p=0.589).
 
 % Thus, even though the users encountered the original in-video questions in both conditions, the QuizCram format caused them to remember the answers better. We attribute this difference to the increased prominence of questions in the QuizCram interface, and requirement that questions be answered correctly by the users before proceeding onwards.
 
 % \subsubsection{Exam Results for Unit Quiz}
 
-Unit exam scores were similar when using QuizCram compared to the in-video condition. Average scores on the portion of questions covered by QuizCram was 65.1\%, while scores for the questions from the portion viewed using the in-video interface was 63.4\%. This difference was not significant (t=0.44, p=0.669). % Users performed slightly better on the questions from the second half of the unit exam: the average score was 59.2\% for questions covering the first half of the videos, and 69.3\% for questions covering the second half of videos (t=-1.98, p=0.064).
+% Unit exam scores were similar when using QuizCram compared to the in-video condition. Average scores on the portion of questions covered by QuizCram was 65.1\%, while scores for the questions from the portion viewed using the in-video interface was 63.4\%. This difference was not significant (t=0.44, p=0.669). % Users performed slightly better on the questions from the second half of the unit exam: the average score was 59.2\% for questions covering the first half of the videos, and 69.3\% for questions covering the second half of videos (t=-1.98, p=0.064).
 
 % This result is not unexpected, given that the unit quiz questions covered different concepts than those the in-video quizzes focused on, even though they were both covered in the videos. Our inserted questions likewise did not overlap with the unit quiz questions, to avoid giving QuizCram users an unfair advantage on the unit quiz. This suggests that even though QuizCram's question-centric viewing approach helps learners learn the concepts that are tested in the questions, it does not appear to help them with portions of the video that are not tested.
 
 % \subsubsection{Exam Results for Extra and Free-Response Questions}
 
-Users were better able to answer the extra questions we inserted in the QuizCram condition when viewing the section with QuizCram. They averaged 85.5\% with QuizCram, compared to 76.0\% with the in-video interface. This difference was statistically significant (t=2.44, p=0.0260). % This is expected: users had previously seen these questions if they were using QuizCram, but they were not shown to users in the in-video quiz condition.
+% Users were better able to answer the extra questions we inserted in the QuizCram condition when viewing the section with QuizCram. They averaged 85.5\% with QuizCram, compared to 76.0\% with the in-video interface. This difference was statistically significant (t=2.44, p=0.0260). % This is expected: users had previously seen these questions if they were using QuizCram, but they were not shown to users in the in-video quiz condition.
 
-Users were also better able to answer the free-response questions when using QuizCram. They averaged 67.6\% correctness with QuizCram, compared to 49.0\% correctness with the in-video quiz format. A t-test showed this difference was statistically significant (t=3.95, p=0.0010). % The average scores between the two halves were similar -- 59.4\% average for part 1, 57.1\% average for part 2, with no significant difference (t=0.35, p=0.731).
+% Users were also better able to answer the free-response questions when using QuizCram. They averaged 67.6\% correctness with QuizCram, compared to 49.0\% correctness with the in-video quiz format. A t-test showed this difference was statistically significant (t=3.95, p=0.0010). % The average scores between the two halves were similar -- 59.4\% average for part 1, 57.1\% average for part 2, with no significant difference (t=0.35, p=0.731).
 
 % Although the users who used QuizCram had never seen the free-response questions before, the questions covered similar material to the extra multiple-checkbox questions we had inserted for the QuizCram format, except in free-response format. This suggests that when using QuizCram, users are not simply learning how to recognize the correct answers for questions, but are also learning to recall them. It also suggests that if there is a particular piece of information that the instructor would like the class to be able to recall, inserting it as an additional question into the QuizCram system is one possible way to accomplish this goal.
 
