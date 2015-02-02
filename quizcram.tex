@@ -3,9 +3,11 @@
 % See http://personales.upv.es/luileito/chiext/
 
 %% EXAMPLE BEGIN -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
-% \copyrightinfo{Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org. \\
-% {\emph{CHI'14}}, April 26--May 1, 2014, Toronto, Canada. \\
-% Copyright \copyright~2014 ACM ISBN/14/04...\$15.00. \\
+\copyrightinfo{Permission to make digital or hard copies of part or all of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for third-party components of this work must be honored. For all other uses, contact the Owner/Author. Copyright is held by the owner/author(s).\\
+CHI'15 Extended Abstracts, Apr 18-23, 2015, Seoul, Republic of Korea\\
+ACM 978-1-4503-3146-3/15/04.\\
+http://dx.doi.org/10.1145/2702613.2726966}
+%Copyright \copyright~2014 ACM ISBN/14/04...\$15.00. \\
 % DOI string from ACM form confirmation}
 %% EXAMPLE END -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
 
@@ -50,6 +52,8 @@
 
 \usepackage{paralist}
 
+%\usepackage{microtype}
+
 \begin{document}
 
 \maketitle
@@ -71,7 +75,7 @@ We also allow users to review using a timeline of previously answered questions 
 To encourage users to review questions, QuizCram keeps track of their question-answering and video-watching history and recommends users to review questions they have not fully mastered.
 QuizCram-format courses can be generated automatically from lectures with in-video quizzes,
 though the format is flexible enough to accommodate multiple questions per video segment.
-Our user study comparing QuizCram to in-video quizzes finds that users
+Our user study comparing QuizCram to in-video quizzes found that users
 practice answering and reviewing questions more when using QuizCram, and
 are better able to remember answers to questions they encountered.
 \end{abstract}
@@ -304,7 +308,7 @@ We recruited 18  students by posting on university mailing lists. 12 were female
 
 % We doubled the number of questions shown in the QuizCram condition by adding additional questions in the same style and format as the original multiple-checkbox in-video questions. We chose our questions carefully such that the answers were clearly stated in the video, but they would not ask the same facts that were tested on the unit exam or original in-video questions.
 
-The videos, in-video quizzes, and unit exams were from Unit 1 of the Neurobiology course on Coursera. There were 9 questions and 5 videos for each 25-minute segment. We generated the initial QuizCram materials directly from the course. To see whether we could improve the recall of particular facts by adding questions, we added extra questions to the QuizCram condition to double the total number of questions. The extra questions were in the same multiple-checkbox format as the original questions. We made sure that they did not depend on the same facts as the unit exam or in-video questions.
+The videos, in-video quizzes, and unit exams were from Unit 1 of the Neurobiology course on Coursera. There were 9 questions and 5 videos in each 25-minute section. We generated the initial QuizCram materials directly from the course. To see whether we could improve the recall of particular facts by adding questions, we added extra questions to the QuizCram condition to double the total number of questions. The extra questions were in the same multiple-checkbox format as the original questions. We made sure that they did not depend on the same facts as the unit exam or in-video questions.
 
 We also wrote a set of free-response questions, with one corresponding to each of the extra questions. We used these free-response questions to test whether users had learned the material tested by in-video questions well enough to recall it (rather than recognizing it).
 
@@ -347,7 +351,9 @@ Parts 2-4 were automatically graded, and free-response questions were graded bli
 
 \subsection{Exam Results}
 
-Exam results are shown in \autoref{fig:exam-results}.  QuizCram users performed significantly better on the original in-video questions. We attribute this improvement to QuizCram's increased focus on questions. They also performed better at both types of extra questions. This suggests that we can use added questions in QuizCram to improve retention of particular facts from the video.
+Exam results are shown in \autoref{fig:exam-results}.  QuizCram users performed significantly better on the original in-video questions, which had been shown in both conditions. They also performed better at both types of extra questions. Thus, QuizCram improves retention of the original in-video questions, and we can use added questions to improve retention of particular facts from the video.
+% We attribute this improvement to QuizCram's increased focus on questions.
+% There was no significant difference in unit exam scores.
 
 \begin{figure}
 \centering
@@ -378,7 +384,7 @@ Exam results are shown in \autoref{fig:exam-results}.  QuizCram users performed 
 
 \subsection{Survey Results}
 
-When asked to rate their overall satisfaction with the tool a scale of 1 to 7, the average was 5.28 for QuizCram, and 5.17 for the in-video quiz format.  61\% indicated they would prefer using QuizCram if they wanted to remember material long-term or were preparing for an exam.
+When asked to rate satisfaction with the tool on a scale of 1 to 7, the average was 5.28 for QuizCram, and 5.17 for in-video quizzes.  61\% said would prefer QuizCram if they wanted to remember material long-term or were preparing for an exam. These improvements were not significant.
 
 Users liked QuizCram's question-based timeline of videos, and thought it was helpful for reviewing. However, some users thought that the interface's emphasis on questions distracted them from watching the video.
 
@@ -467,7 +473,7 @@ QuizCram breaks the video into segments associated with questions, and always sh
 
 % Based on our observations that in-video quizzes play an important role in video navigation, we designed QuizCram, a system that uses questions to direct users' viewing of the material. It allows users to preview the question for the sections, and provides a timeline of questions and suggestions to encourage reviewing.
 
-Our user study finds that QuizCram increases focus on questions -- when the in-video questions were tested again a day later, users using QuizCram remembered them better than if they were presented as in-video quizzes. Users practiced answering and reviewing questions more often when using QuizCram. % We also found that increasing the amount of questions presented with QuizCram results in users being able to recall the material tested by the additional questions better. %, even when answering based on recall not recognition.
+Our user study found that QuizCram increases focus on questions -- when the in-video questions were tested again a day later, users using QuizCram remembered them better than if they were presented as in-video quizzes. Users practiced answering and reviewing questions more often when using QuizCram. % We also found that increasing the amount of questions presented with QuizCram results in users being able to recall the material tested by the additional questions better. %, even when answering based on recall not recognition.
 
 Current online courses rely on external problem sets and exams to test understanding of content in more depth than the in-video quizzes. However, the majority of MOOC particpants interact primarily with videos and do not take exams or do problem sets. \cite{anderson2014engaging}. Thus, moving more of the course content out of problem sets and making the video more interactive and question-oriented provides a way to benefit these viewers without removing them from the scaffolding of videos. We believe that QuizCram is a logical step from in-video quizzes towards more interactive, question-driven study experiences.
 
