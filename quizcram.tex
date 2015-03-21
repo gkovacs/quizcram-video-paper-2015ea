@@ -1,70 +1,100 @@
-\documentclass{chi-ext}
-% Please be sure that you have the dependencies (i.e., additional LaTeX packages) to compile this example.
-% See http://personales.upv.es/luileito/chiext/
+\documentclass{sigchi}
+
+% Use this command to override the default ACM copyright statement
+% (e.g. for preprints).  Consult the conference website for the
+% camera-ready copyright statement.
+
 
 %% EXAMPLE BEGIN -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
-\copyrightinfo{Permission to make digital or hard copies of part or all of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for third-party components of this work must be honored. For all other uses, contact the Owner/Author. Copyright is held by the owner/author(s).\\
-CHI'15 Extended Abstracts, Apr 18-23, 2015, Seoul, Republic of Korea\\
-ACM 978-1-4503-3146-3/15/04.\\
-http://dx.doi.org/10.1145/2702613.2726966}
-%Copyright \copyright~2014 ACM ISBN/14/04...\$15.00. \\
+% \toappear{Permission to make digital or hard copies of all or part of this work for personal or classroom use is      granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org. \\
+% {\emph{CHI'14}}, April 26--May 1, 2014, Toronto, Canada. \\
+% Copyright \copyright~2014 ACM ISBN/14/04...\$15.00. \\
 % DOI string from ACM form confirmation}
 %% EXAMPLE END -- HOW TO OVERRIDE THE DEFAULT COPYRIGHT STRIP -- (July 22, 2013 - Paul Baumann)
 
-\title{QuizCram: A Question-Driven Video Studying Interface}
 
-\numberofauthors{1}
-% Notice how author names are alternately typesetted to appear ordered in 2-column format;
-% i.e., the first 4 autors on the first column and the other 4 auhors on the second column.
-% Actually, it's up to you to strictly adhere to this author notation.
-\author{
-  \alignauthor{
-  	\textbf{Geza Kovacs}\\
-  	\affaddr{Department of Computer Science, Stanford University}\\
-  	\email{geza@cs.stanford.edu}
-  }
-}
+% Arabic page numbers for submission.  Remove this line to eliminate
+% page numbers for the camera ready copy 
 
-% Paper metadata (use plain text, for PDF inclusion and later re-using, if desired)
-\def\plaintitle{QuizCram: A Question-Driven Video Studying Interface}
-\def\plainauthor{Geza Kovacs}
-\def\plainkeywords{video flashcards, lecture reviewing, in-video questions}
-\def\plaingeneralterms{video flashcards, lecture reviewing, in-video questions}
+%\pagenumbering{arabic}
 
-\hypersetup{
-  % Your metadata go here
-  pdftitle={\plaintitle},
-  pdfauthor={\plainauthor},  
-  pdfkeywords={\plainkeywords},
-  pdfsubject={\plaingeneralterms},
-  % Quick access to color overriding:
-  %citecolor=black,
-  %linkcolor=black,
-  %menucolor=black,
-  %urlcolor=black,
-}
+% Load basic packages
+\usepackage{balance}  % to better equalize the last page
+\usepackage{graphics} % for EPS, load graphicx instead 
+%\usepackage[T1]{fontenc}
+\usepackage{txfonts}
+\usepackage{times}    % comment if you want LaTeX's default font
+\usepackage[pdftex]{hyperref}
+% \usepackage{url}      % llt: nicely formatted URLs
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{ccicons}
+\usepackage{todonotes}
 
-\usepackage{graphicx}   % for EPS use the graphics package instead
-\usepackage{balance}    % useful for balancing the last columns
-\usepackage{bibspacing} % save vertical space in references
-
-\usepackage[absolute]{textpos}
-
+% custom packages
 \usepackage{paralist}
 
-%\usepackage{microtype}
+% llt: Define a global style for URLs, rather that the default one
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\bf\ttfamily}}}
+\makeatother
+\urlstyle{leo}
 
+% To make various LaTeX processors do the right thing with page size.
+\def\pprw{8.5in}
+\def\pprh{11in}
+\special{papersize=\pprw,\pprh}
+\setlength{\paperwidth}{\pprw}
+\setlength{\paperheight}{\pprh}
+\setlength{\pdfpagewidth}{\pprw}
+\setlength{\pdfpageheight}{\pprh}
+
+% Make sure hyperref comes last of your loaded packages, to give it a
+% fighting chance of not being over-written, since its job is to
+% redefine many LaTeX commands.
+\definecolor{linkColor}{RGB}{6,125,233}
+\hypersetup{%
+  pdftitle={QuizCram: A Quiz-Driven Video Viewing Interface},
+  pdfauthor={LaTeX},
+  pdfkeywords={SIGCHI, proceedings, archival format},
+  bookmarksnumbered,
+  pdfstartview={FitH},
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=linkColor,
+  breaklinks=true,
+}
+
+% create a shortcut to typeset table headings
+% \newcommand\tabhead[1]{\small\textbf{#1}}
+
+% End of preamble. Here it comes the document.
 \begin{document}
+
+\title{QuizCram: A Quiz-Driven Video Viewing Interface}
+
+\numberofauthors{3}
+\author{%
+  \alignauthor{1st Author Name\\
+    \affaddr{Affiliation}\\
+    \affaddr{City, Country}\\
+    \email{e-mail address}}\\
+  \alignauthor{2nd Author Name\\
+    \affaddr{Affiliation}\\
+    \affaddr{City, Country}\\
+    \email{e-mail address}}\\
+  \alignauthor{3rd Author Name\\
+    \affaddr{Affiliation}\\
+    \affaddr{City, Country}\\
+    \email{e-mail address}}\\
+}
 
 \maketitle
 
-\begin{textblock}{5}(3.6,7.7)
-\begin{figure}
-\includegraphics[width=\columnwidth]{singlevideo-overview}
-\caption{The QuizCram interface, showing the current video. The focus question is on left, and the associated video is on the right. The progress bar highlights the relevant portion of the video, and shows which segments have already been seen.}
-\label{fig:figure1}
-\end{figure}
-\end{textblock}
 
 \begin{abstract}
 % Need some motivation here before jumping right into what we built
@@ -80,15 +110,13 @@ practice answering and reviewing questions more when using QuizCram, and
 are better able to remember answers to questions they encountered.
 \end{abstract}
 
-\keywords{\plainkeywords}
+\keywords{video flashcards; lecture viewing; in-video quizzes}
 %\textcolor{red}{Optional section to be included in your final version.}
 
-\category{H.5.2.}{Information Interfaces and Presentation (e.g. HCI)}{Graphical User Interfaces}
-%See \cite{ACMCCS} 
-%See: \url{http://www.acm.org/about/class/1998/} 
-%for help using the ACM Classification system.
-%\textcolor{red}{Optional section to be included in your final version, but strongly encouraged.}
-
+\category{H.5.2.}{User Interfaces}{Graphical user interfaces (GUI)}{}{}
+%  (e.g. HCI)}{Miscellaneous} %\category{See
+%  \url{http://acm.org/about/class/1998/} for the full list of ACM
+%  classifiers. This section is required.}{}{}
 
 % =============================================================================
 \section{Introduction}
@@ -487,9 +515,9 @@ Current online courses rely on external problem sets and exams to test understan
 
 \section{Acknowledgements}
 
-Thanks to Darren Edge at Microsoft Research Asia for mentoring this project. Geza Kovacs is supported by the NDSEG fellowship.
+Anonymized for submission
 
-\bibliographystyle{acm-sigchi}
+\bibliographystyle{SIGCHI-Reference-Format}
 \bibliography{quizcram}
 \end{document}
 
