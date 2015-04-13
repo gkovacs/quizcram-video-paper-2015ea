@@ -177,6 +177,20 @@ We used a within-subjects study to compare QuizCram to the in-video quiz format.
 
 % \pagebreak
 
+\begin{figure}
+%\centering
+\includegraphics[width=1.0\columnwidth]{seek-sources-and-destinations-short}
+\caption{Sources and destinations of seek chains in the Machine Learning course on Coursera, which uses in-video quizzes. Users tend to seek backward from in-video quizzes (55x higher than baseline back-seek rate), and forward to in-video quizzes and the 10 seconds immediately preceding them (4x higher than baseline forward-seek rate)}
+\label{fig:seek-sources-and-destinations-short}
+\end{figure}
+
+\begin{figure}
+%\centering
+\includegraphics[width=1.0\columnwidth]{table-of-seeks-short}
+\caption{Portions of the video that are skipped over by seek chains in the Machine Learning course on Coursera. Users do not tend to seek forward across in-video quizzes.}
+\label{fig:table-of-seeks-short}
+\end{figure}
+
 \section{Motivation: Coursera's In-Video Quizzes}
 
 % During our analysis of viewing logs for the Machine Learning course on Coursera, we observed that users' navigation behavior is heavily influenced by in-video quizzes.
@@ -193,7 +207,8 @@ There are many backwards seeks starting from in-video quizzes. As shown in \auto
 
 We also observe that there are forward seeks that end up at or immediately preceding the quiz. As shown in \autoref{fig:seek-sources-and-destinations-short}, 6.6\% of all forwards seek chains (or 3.7\% of total seek chains) end up either at the in-video quiz or within 10 seconds preceding it. These forward seeks are likely reflect users attempting to view the in-video quiz -- as Coursera's interface does not provide an option to go to in-video quizzes, users must seek to directly before the in-video quiz in order to view it.
 
-Most seek chains (93\%) do not cross in-video quiz boundaries -- users do not tend to skip forward or backward across in-video quizzes. As shown in \autoref{fig:table-of-seeks-short}, users are 0.4x less likely to skip forwards across an in-video quiz, than across a second of video. \autoref{fig:seek-scatterplot} visualizes seek sources and destinations in a single lecture video with 2 in-video quizzes: there are many forward seeks to quizzes, and backward seeks from quizzes.
+%  -- users do not tend to skip forward or backward across in-video quizzes.
+Most seek chains (93\%) do not cross in-video quiz boundaries. As shown in \autoref{fig:table-of-seeks-short}, users are 0.4x less likely to skip forwards across an in-video quiz, than across a second of video. \autoref{fig:seek-scatterplot} visualizes seek sources and destinations in a single lecture video with 2 in-video quizzes: there are many forward seeks to quizzes, and backward seeks from quizzes.
 
 Users also rarely review lecture videos: only 11\% of users who finished watching a lecture will ever open it again.
 
@@ -204,20 +219,6 @@ Based on these observations, we wished to develop a video viewer that would bett
 % . There is much seeking to and from in-video quizzes -- 6.5\% of forward seeks go to in-video quizzes or the 10 seconds preceding them, even though this is ,  destination of seeks users are 3.5 times more likely to seek to the 10 seconds before a quiz than to other segments.  Users often skip forward to quizzes, or from one quiz to the next, as shown in \autoref{fig:seek-scatterplot}.
 
 \begin{figure}
-%\centering
-\includegraphics[width=1.0\columnwidth]{seek-sources-and-destinations-short}
-\caption{Sources and destinations of seek chains in the Machine Learning course on Coursera, which uses in-video quizzes. Users tend to seek backward from in-video quizzes (55x higher than baseline back-seek rate), and forward to in-video quizzes and the 10 seconds immediately preceding them (4x higher than baseline forward-seek rate)}
-\label{fig:seek-sources-and-destinations-short}
-\end{figure}
-
-\begin{figure}
-%\centering
-\includegraphics[width=1.0\columnwidth]{table-of-seeks-short}
-\caption{Portions of the video that are skipped over by seek chains in the Machine Learning course on Coursera. Users do not tend to seek forward across in-video quizzes.}
-\label{fig:table-of-seeks-short}
-\end{figure}
-
-\begin{figure}
 \includegraphics[width=\columnwidth]{seek-scatterplot}
 \caption{Seeks sources and destinations in a lecture with 2 in-video quizzes. Each point at (x,y) represents a seek from time x to y. There are many seeks to in-video quizzes from the start of the video, the previous section, and between quizzes.} % Backwards seeks tend to go from in-video quizzes (x=146 and x=376) to the preceding section.
 \label{fig:seek-scatterplot}
@@ -226,7 +227,7 @@ Based on these observations, we wished to develop a video viewer that would bett
 % =============================================================================
 \section{Related Work}
 % =============================================================================
-% We designed QuizCram's features based on the following findings from the education literature:
+%We designed QuizCram's features based on the following findings from the education literature:
 %We designed QuizCram's features based on the testing
 % In addition to our findings about peaks in seeking around in-video quizzes (see supplement), we also designed QuizCram's features based on the following findings from the education literature:%, which are also exploited by many other systems.
 
