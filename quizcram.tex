@@ -358,17 +358,10 @@ Once the user has seen all the questions in the unit, QuizCram encourages them t
 
 To help users review videos, QuizCram keeps track of which parts have been watched. It highlights on the progress bar the portions that have already been seen. If the user is viewing a section they have already watched, they can skip to the unseen portion by clicking a button. % Similar techniques for visualizing the user's video viewing history have been presented in the literature \cite{socialnavigation} \cite{lecturescape}, though our system adds the novel feature of allowing users to skip to the next unseen portion.
 
-%\begin{figure}
-%\centering
-%\includegraphics[width=1.0\columnwidth]{invideo-interface}
-%\caption{The in-video quiz format that served as our baseline. Locations of quizzes are indicated in red on the progressbar.}
-%\label{fig:figure5}
-%\end{figure}
-
 % =============================================================================
 \section{Evaluation}
 % =============================================================================
-Our study used a within-subjects design to compare users' studying behavior with QuizCram against an in-video quiz interface that mimcs the format used on Coursera. We used the videos, in-video quizzes, and unit exam from the Neurobiology course on Coursera. We wished to answer the questions:
+Our study used a within-subjects design to compare users' studying behavior with QuizCram against an in-video quiz interface that mimcs the format used on Coursera, as shown in \autoref{fig:invideo-interface}. We used the videos, in-video quizzes, and unit exam from the Neurobiology course on Coursera. We wished to answer the questions:
 
 \begin{compactitem}
 \item Does QuizCram help users better remember answers to the original in-video questions?
@@ -379,6 +372,13 @@ Our study used a within-subjects design to compare users' studying behavior with
 %\item Do users using QuizCram answer questions more?
 %\item Do users using QuizCram re-answer questions more?
 \end{compactitem}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\columnwidth]{invideo-interface}
+\caption{The in-video quiz format that served as our baseline. Locations of quizzes are indicated in red on the progressbar.}
+\label{fig:invideo-interface}
+\end{figure}
 
 %\subsection{Study Design}
 
@@ -478,16 +478,16 @@ When asked to rate satisfaction with the tool on a scale of 1 to 7, the average 
 
 Survey feedback showed that users liked QuizCram's question-based timeline of videos, and thought it was helpful for reviewing. However, some users disliked the visual complexity of the interface, and thought that the prominent display of questions distracted them from watching the video.
 
-\subsection{Analysis of Viewing Logs}
-
-% Users practiced answering questions more times when using QuizCram, as shown in \autoref{fig:event-logs}. Users also reviewed questions more often when using QuizCram. This increase in practice and reviewing helps explain the increased scores on the in-video questions during the exams.
-
 \begin{figure}
 \centering
 \includegraphics[width=1.0\columnwidth]{event-logs}
 \caption{Average number of events per user in each condition}
 \label{fig:event-logs}
 \end{figure}
+
+\subsection{Analysis of Viewing Logs}
+
+% Users practiced answering questions more times when using QuizCram, as shown in \autoref{fig:event-logs}. Users also reviewed questions more often when using QuizCram. This increase in practice and reviewing helps explain the increased scores on the in-video questions during the exams.
 
 To compare how users interacted with the two systems, we collected usage logs from each tool, as shown in \autoref{fig:event-logs}. We found that users answered each question more times when using QuizCram. Users also reviewed previously-answered questions more often when using QuizCram. This increase in practice and reviewing helps explain the increased exam scores on the original in-video questions. %during the exams. % when using QuizCram.
 
