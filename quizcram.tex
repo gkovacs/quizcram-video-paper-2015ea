@@ -268,7 +268,7 @@ Based on our observations that users tend to engage with in-video quizzes but ra
 
 % \subsection{Design Process}
 
-Our initial design was to treat video segments as flashcards, and schedule them using a spaced repetition algorithm. We associated each segment with the corresponding in-video quiz, so we could test users's knowledge of each segment. However, scheduling videos with a simple spaced-repetition algorithm would often result in the user being asked to review older material before they got through all of the video segments, which informal trials and interviews indicated that users were annoyed by. Hence, we focused more on enabling users to freely review videos on their own, and would only start scheduling older videos for review based on spaced repetition, once they had made an initial pass through the videos.
+Our initial design was to treat video segments as flashcards, and schedule them using a spaced repetition algorithm. We associated each segment with the corresponding in-video quiz, so we could test users's knowledge of each segment. However, scheduling videos with a simple spaced-repetition algorithm would often result in the user being asked to review older material before they got through all of the video segments, which informal studies indicated that users were unaccustomed to. Hence, we focused more on enabling users to freely review videos on their own, and would only start scheduling older videos for review based on spaced repetition, once they had made an initial pass through the videos.
 
 \section{QuizCram Interface Features}
 
@@ -361,7 +361,7 @@ Once the user has seen all the questions in the unit, QuizCram encourages them t
 
 \subsection{Directing Attention to Unseen Parts of Videos}
 
-To help users review videos, QuizCram keeps track of which parts have been watched. It highlights on the progress bar the portions that have already been seen. If the user is viewing a section they have already watched, they can skip to the unseen portion by clicking a button. % Similar techniques for visualizing the user's video viewing history have been presented in the literature \cite{socialnavigation} \cite{lecturescape}, though our system adds the novel feature of allowing users to skip to the next unseen portion.
+To help users review videos and resume where they left off, QuizCram keeps track of which parts have been watched. It highlights on the progress bar the portions that have already been seen. If the user is viewing a section they have already watched, they can skip to the unseen portion by clicking a button, as shown in \autoref{fig:singlevideo}. % Similar techniques for visualizing the user's video viewing history have been presented in the literature \cite{socialnavigation} \cite{lecturescape}, %though our system adds the novel feature of allowing users to skip to the next unseen portion.
 
 % =============================================================================
 \section{Evaluation}
@@ -401,9 +401,16 @@ We recruited 18  students by posting on university mailing lists. 12 were female
 
 The videos, in-video quizzes, and unit exams were from Unit 1 of the Neurobiology course on Coursera. There were 9 questions and 5 videos in each 25-minute section. We generated the initial QuizCram materials directly from the course.
 
-% During pilot studies, we noticed that the 
+% During pilot studies, we noticed that large segments of the videos were not covered by 
+% Because large segments of the video were not covered by any, 
+% . In a pilot study -- however, 
+% Because the original in-video quiz materials did not . In a pilot study, we had . We envision that if material is designed specifically for the .
 
-To see whether we could improve the recall of particular facts by adding questions, we added extra questions to the QuizCram condition to double the total number of questions. The extra questions were in the same multiple-checkbox format as the original questions. We made sure that they did not depend on the same facts as the unit exam or in-video questions.
+% Furthermore, we believe that the QuizCram format is best-suited towards a more question-heavy viewing experience than in-video quizzes currently provide. 
+
+Not all of the segments of the lecture videos had in-video quizzes immediately following them. For such segments, QuizCram would normally show a generic ``Rate your understanding of this video segment'' question as the focus question. However, in pilot studies, users indicated that they found these self-assessment questions less helpful than regular questions, as they did not provide a preview about what the section would be about. Furthermore, we believe that the QuizCram format is best-suited towards a more question-heavy viewing experience than in-video quizzes currently provide. Hence, to simulate what content that was designed for the QuizCram format would look like, we added our own extra questions for video segments which lacked associated in-video quizzes. This doubled the total number of questions per section in the QuizCram condition. The extra questions were in the same multiple-checkbox format as the original questions. We made sure that they did not depend on the same facts as the unit exam or original in-video quizzes.
+
+% To see whether we could improve the recall of particular facts by adding questions, we added extra questions to the QuizCram condition to double the total number of questions. The extra questions were in the same multiple-checkbox format as the original questions. We made sure that they did not depend on the same facts as the unit exam or original in-video quizzes.
 
 We also wrote a set of free-response questions, with one corresponding to each of the extra questions. We used these free-response questions to test whether users had learned the material tested by in-video questions well enough to recall it (rather than recognizing it).
 
@@ -411,13 +418,21 @@ We also wrote a set of free-response questions, with one corresponding to each o
 
 \subsection{Procedure}
 
-% The study was conducted online over 2 days, with a 90-minute study session on the first day, and a 30-minute test session on the second day. % Before users started the study, we informed them that they would be given 2 sets of videos, they should study them for 40 minutes apiece, and they would be given an exam the next day. % We did not tell them about the content of the exams.
+The study was conducted online over 2 days. Before users started the study, we informed them that they would be given 2 sets of videos, they would study them for 40 minutes apiece, and they would be given an exam the next day. We did not tell them about the content of the exam in advance. % Our server logged interactions as they were using the tools. %, because we had observed in pilot studies that some users would 
 
-% The study was conducted online over 2 days. On day 1, users were given 40 minutes to study the first section with one tool. Then, they used the other tool to study the second section for 40 minutes, and filled out a survey (order of tools was randomized). On day 2, users took the following exams:
+% The study was conducted online over 2 days, with a 90-minute study session on the first day, and a 30-minute test session on the second day. Before users started the study, we informed them that they would be given 2 sets of videos, they should study them for 40 minutes apiece, and they would be given an exam the next day. There was a 10-minute break between the study sessions. We did not tell them about the content of the exam in advance. Our server logged interactions as they were using each of the tools. %, because we had observed in pilot studies that some users would 
 
-The study was conducted online over 2 days. On day 1, users studied the first section with one tool for 40 minutes. Then, they studied the second section with the other tool for 40 minutes, and took surveys. The order of tools was randomized. On day 2, users took the following exams:
+%The study was conducted online over 2 days. On day 1, users were given 40 minutes to study the first section with one tool. Then, they used the other tool to study the second section for 40 minutes, and filled out a survey (order of tools was randomized). On day 2, users took the following exams:
 
-% On the first day, users used one tool to watch the first half of Unit 1 (5 videos of length 23 minutes total). They were told after 40 minutes to fill out a survey about the tool. Then, they used the other tool to watch the second half of Unit 1 (5 videos of length 25 minutes total), and filled out the survey after 40 minutes of watching.
+On day 1, users studied the first section (5 videos with a total length of 23 minutes) with one tool for 40 minutes, and answered a survey about the tool. Then, they studied the second section (5 videos with a total length of 25 minutes) with the other tool for 40 minutes, and answered a survey about the tool. The order of tools was randomized. % Our server logged interactions with each of the tools.
+
+% On day 2, users took the following exams:
+
+% The study was conducted online over 2 days.
+
+% On day 1, users used one tool to watch the first half of Unit 1 (5 videos with a total length of 23 minutes). They were told after 40 minutes to fill out a survey about the tool. Then, they used the other tool to watch the second half of Unit 1 (5 videos with a total length of 25 minutes), and filled out the survey after 40 minutes of watching. The order of tools was randomized. % Before they started studying, we told them they would be given an exam the following day about the material. However, we did not tell them the specific format or contents of the exam in advance.
+
+On day 2, users took the following exams:
 
 \begin{compactenum}
 \item Extra free-response questions %, both halves
