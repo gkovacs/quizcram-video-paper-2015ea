@@ -394,7 +394,11 @@ We recruited 18  students by posting on university mailing lists. 12 were female
 
 % We doubled the number of questions shown in the QuizCram condition by adding additional questions in the same style and format as the original multiple-checkbox in-video questions. We chose our questions carefully such that the answers were clearly stated in the video, but they would not ask the same facts that were tested on the unit exam or original in-video questions.
 
-The videos, in-video quizzes, and unit exams were from Unit 1 of the Neurobiology course on Coursera. There were 9 questions and 5 videos in each 25-minute section. We generated the initial QuizCram materials directly from the course. To see whether we could improve the recall of particular facts by adding questions, we added extra questions to the QuizCram condition to double the total number of questions. The extra questions were in the same multiple-checkbox format as the original questions. We made sure that they did not depend on the same facts as the unit exam or in-video questions.
+The videos, in-video quizzes, and unit exams were from Unit 1 of the Neurobiology course on Coursera. There were 9 questions and 5 videos in each 25-minute section. We generated the initial QuizCram materials directly from the course.
+
+% During pilot studies, we noticed that the 
+
+To see whether we could improve the recall of particular facts by adding questions, we added extra questions to the QuizCram condition to double the total number of questions. The extra questions were in the same multiple-checkbox format as the original questions. We made sure that they did not depend on the same facts as the unit exam or in-video questions.
 
 We also wrote a set of free-response questions, with one corresponding to each of the extra questions. We used these free-response questions to test whether users had learned the material tested by in-video questions well enough to recall it (rather than recognizing it).
 
@@ -478,6 +482,13 @@ Survey feedback showed that users liked QuizCram's question-based timeline of vi
 
 % Users practiced answering questions more times when using QuizCram, as shown in \autoref{fig:event-logs}. Users also reviewed questions more often when using QuizCram. This increase in practice and reviewing helps explain the increased scores on the in-video questions during the exams.
 
+\begin{figure}
+\centering
+\includegraphics[width=1.0\columnwidth]{event-logs}
+\caption{Average number of events per user in each condition}
+\label{fig:event-logs}
+\end{figure}
+
 To compare how users interacted with the two systems, we collected usage logs from each tool, as shown in \autoref{fig:event-logs}. We found that users answered each question more times when using QuizCram. Users also reviewed previously-answered questions more often when using QuizCram. This increase in practice and reviewing helps explain the increased exam scores on the original in-video questions. %during the exams. % when using QuizCram.
 
 % To compare how users were using the two systems, we logged usage data for each tool, as shown in \autoref{fig:event-logs}. We found that users practiced answering questions more times when using QuizCram. Users also reviewed questions more often when using QuizCram. This increase in practice and reviewing helps explain the increased scores on the in-video questions during the exams. % when using QuizCram.
@@ -485,13 +496,6 @@ To compare how users interacted with the two systems, we collected usage logs fr
 % To compare how users were using the two systems, we logged the number times users answered questions or seeked with each tool, as shown in \autoref{fig:event-logs}. We found that users practiced answering questions more times when using QuizCram. Users also reviewed questions more often when using QuizCram (we defined ``reviewing'' as re-answering a question at least a minute after they first answered it). This increase in practice and reviewing helps explain the increased scores on the in-video questions during the exams.
 
 Users seeked less on average when using QuizCram, which may be because they did not have to seek to and from in-video quizzes. However, this difference was not statistically significant.
-
-\begin{figure}
-\centering
-\includegraphics[width=1.0\columnwidth]{event-logs}
-\caption{Average number of events per user in each condition}
-\label{fig:event-logs}
-\end{figure}
 
 % Users reported their preferences as follows:
 %After users had used both tools, they responded with their preferences as follows:
