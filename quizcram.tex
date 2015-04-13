@@ -248,7 +248,7 @@ Advance organizers are information presented prior to learning, that help the le
 
 \subsection{Interfaces for Navigating Lecture Videos}
 
-Video Digests is a system that uses textual summaries of video clips to help users navigate through the video \cite{videodigests}. LectureScape uses other users' aggregated viewing logs to help identify points of interest in the video \cite{lecturescape}. Panopticon uses a visual display of all video segments to help users find segments of interest \cite{panopticon}. Rather than relying on external annotations, our own system, QuizCram, instead uses questions extracted from existing in-video quiz content as a means of helping uses navigate videos. % This has the advantage over  %  Unlike Video Digests and LectureScape, QuizCram does not require 
+Video Digests is a system that uses textual summaries of video clips to help users navigate through the video \cite{videodigests}. LectureScape uses other users' aggregated viewing logs to help identify points of interest in the video \cite{lecturescape}. Panopticon uses a visual display of all video segments to help users find segments of interest \cite{panopticon}. Rather than relying on external annotations, QuizCram instead uses questions extracted from existing in-video quiz content to help users navigate videos. % This has the advantage over  %  Unlike Video Digests and LectureScape, QuizCram does not require 
 
 % QuizCram similarly breaks videos into segments associated with an advance organizer, but we use existing in-video questions to summarize the clips. Both QuizCram and advance organizers use a short task (reading some text or answering a question) to help the user decide whether to invest several minutes in viewing/reviewing the video.
 
@@ -258,7 +258,7 @@ Video Digests is a system that uses textual summaries of video clips to help use
 
 % =============================================================================
 
-\section{Overview of System Design Process}
+\section{System Design Process}
 
 Based on our observations that users tend to engage with in-video quizzes but rarely ever revisit MOOC lecture content (see supplement), as well as the importance of testing and review for retention, our goal was to build a system that would test users' knowledge of lecture materials and encourage them to review materials using spaced repetition.
 
@@ -427,12 +427,14 @@ The study was conducted online over 2 days. On day 1, users studied the first se
 % Parts 2-4 of the exam were automatically graded, assigning scores equal to the fraction of checkboxes correctly checked.
 % The free-response questions, which were of the form ``List N examples of X'' or ``List N facts about X'', were scored as:
 %Parts 2-4 of the exam were automatically graded, assigning scores equal to the fraction of checkboxes correctly checked. The free-response questions were graded by an independent grader.
-Parts 2-4 were automatically graded, and free-response questions were graded blindly. % according to the formula: %by an independent grader.
+% Parts 2-4 were automatically graded, and free-response questions were graded blindly. % according to the formula: %by an independent grader.
 % Free-response questions were graded by an independent rater.
 
-%\vspace{-4mm}
+Parts 2-4 were automatically graded. Free-response questions were graded blindly according to the formula:
 
-%\[ \frac{\# correct\ examples\ given}{Maximum(\# examples\ requested,\ \# examples\ given)} \]
+\vspace{-4mm}
+
+\[ \frac{\# correct\ examples\ given}{Maximum(\# examples\ requested,\ \# examples\ given)} \]
 
 % Thus, if a question requests 2 examples, giving 1 correct example gets a score of 1/2, giving 2 correct examples and 1 incorrect example gets a score of 2/3, etc. The overall score for the free-response exam was the mean of these scores.
 
