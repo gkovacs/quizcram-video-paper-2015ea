@@ -103,17 +103,8 @@
 %Users navigate through the video segments by answering questions.
 %QuizCram-format courses can be generated automatically from lectures with in-video quizzes,
 % though the format is flexible enough to accommodate multiple questions per video segment.
-QuizCram is an interface for navigating lecture videos that uses quizzes to help users determine what they should view.
 %We developed it in response to observing that several video seeking behaviors in Coursera center around in-video quizzes.
-We developed it in response to observing several video seeking behaviors centered around Coursera's in-video quizzes.
-QuizCram shows users a question to answer, with an associated video segment.
-Users can use these questions to navigate through video segments, and find video segments they need to review.
-We also allow users to review using a timeline of previously answered questions and videos.
-To encourage users to review the material, QuizCram keeps track of their question-answering and video-watching history and schedules sections they likely have not mastered for review.
-QuizCram-format materials can be generated from existing lectures with in-video quizzes.
-Our user study comparing QuizCram to in-video quizzes found that users
-practice answering and reviewing questions more when using QuizCram, and
-are better able to remember answers to questions they encountered.
+QuizCram is an interface for navigating lecture videos that uses quizzes to help users determine what they should view. We developed it in response to observing peaks in video seeking behaviors centered around Coursera's in-video quizzes. QuizCram shows users a question to answer, with an associated video segment. Users can use these questions to navigate through video segments, and find video segments they need to review. We also allow users to review using a timeline of previously answered questions and videos. To encourage users to review the material, QuizCram keeps track of their question-answering and video-watching history and schedules sections they likely have not mastered for review. QuizCram-format materials can be generated from existing lectures with in-video quizzes. Our user study comparing QuizCram to in-video quizzes found that users practice answering and reviewing questions more when using QuizCram, and are better able to remember answers to questions they encountered.
 \end{abstract}
 
 \keywords{video flashcards; lecture viewing; in-video quizzes}
@@ -180,6 +171,15 @@ We used a user study with a within-subjects design to compare QuizCram to the in
 
 % \pagebreak
 
+%\begin{figure}
+\begin{figure*}
+\includegraphics[width=2.0 \columnwidth]{seek-scatterplot}
+%\includegraphics[width=1.0 \columnwidth]{seek-scatterplot}
+\caption{Seek sources and destinations in a lecture with 2 in-video quizzes. Each point at (x,y) represents a seek from time x to y. There are many seeks to in-video quizzes from the start of the video, the previous section, and between quizzes.} % Backwards seeks tend to go from in-video quizzes (x=146 and x=376) to the preceding section.
+\label{fig:seek-scatterplot}
+\end{figure*}
+%\end{figure}
+
 \begin{figure}
 %\centering
 \includegraphics[width=1.0\columnwidth]{seek-sources-and-destinations-short}
@@ -187,7 +187,7 @@ We used a user study with a within-subjects design to compare QuizCram to the in
 \label{fig:seek-sources-and-destinations-short}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 %\centering
 \includegraphics[width=1.0\columnwidth]{table-of-seeks-short}
 \caption{Portions of the video that are skipped over by seek chains in the Machine Learning course on Coursera. Users do not tend to seek forward across in-video quizzes.}
@@ -222,12 +222,6 @@ Based on these observations, we aimed to develop a video viewer that would bette
 % Further details and methodology for this logs analysis work can be found in the supplement.
 
 % . There is much seeking to and from in-video quizzes -- 6.5\% of forward seeks go to in-video quizzes or the 10 seconds preceding them, even though this is ,  destination of seeks users are 3.5 times more likely to seek to the 10 seconds before a quiz than to other segments.  Users often skip forward to quizzes, or from one quiz to the next, as shown in \autoref{fig:seek-scatterplot}.
-
-\begin{figure}
-\includegraphics[width=\columnwidth]{seek-scatterplot}
-\caption{Seeks sources and destinations in a lecture with 2 in-video quizzes. Each point at (x,y) represents a seek from time x to y. There are many seeks to in-video quizzes from the start of the video, the previous section, and between quizzes.} % Backwards seeks tend to go from in-video quizzes (x=146 and x=376) to the preceding section.
-\label{fig:seek-scatterplot}
-\end{figure}
 
 % =============================================================================
 \section{Related Work}
@@ -528,7 +522,7 @@ Survey feedback showed that users liked QuizCram's question-based timeline of vi
 
 \textit{I liked that it picked out the key information I should retain by asking me questions. It helped me decide what to focus on as I watched the video. The chunks were very manageable as well. I liked how it was broken up.}
 
-\textit{It was easy to review the questions and quiz myself multiple times, and ultimately, the repetition aided my understanding of the material.}
+% \textit{It was easy to review the questions and quiz myself multiple times, and ultimately, the repetition aided my understanding of the material.}
 
 %\textit{The video viewing tool gave you the opportunity to learn the material a second time by presenting you the question again out of order (and without the answers). I found that I had to rely on my own recall to answer the questions a second time, and learned the material better.}
 
