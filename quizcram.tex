@@ -335,11 +335,13 @@ The timeline gives users the option to use a more self-directed reviewing strate
 
 We want users to spend their study time focusing on material that they have not yet mastered. Hence, we assign each question a \emph{mastery score}, which represents how well the user currently knows the material, and show users the questions for which they have low mastery score. The question's mastery score is based on the following 3 factors:
 
+%\begin{compactitem}
 \begin{itemize}
 \item \emph{Past performance on question}: This element of the score encourages users to review questions they answered incorrectly. Each time a user tries answering the question, we give them a score equal to the fraction of checkboxes they correctly checked (the questions used in our study were all multiple-check questions). We then take a weighted-mean of historic scores, weighing recent answers more heavily. %all historic scores, with each newer score assigned 2 times more weight than the previous score (so more recent performance is weighted more heavily). %For those video segments that have no associated question, we obtain this score by asking users to rate ``How well did you understand this video?''. If the user has never answered the question before, this has a default score of 0.
 \item \emph{Fraction of associated video segment watched}: This element of the score encourages users to view video segments they have not seen. For each second of video, we keep track of whether the user has ever seen it. This score is the fraction of the video segment that has been seen. % number of seconds watched in the question's video segment, divided by the total length of that video segment.
 %\item \emph{Recency of review}:  This element of the score ensures that users review old questions, but are not shown same questions repeatedly. For simplicity, we use a score that is inversely proportional to how recently the question was last answered. Ideally, one would instead use overdueness of items from a more advanced spaced-repetition algorithm like MemReflex \cite{memreflex}.
 \item \emph{Recency of review}:  This element of the score ensures that users review old questions, but are not shown same questions repeatedly. For simplicity, we use a score that is inversely proportional to how recently the question was last answered. Ideally, one would instead use a more advanced spaced-repetition algorithm like MemReflex \cite{memreflex}. %It is equal to 1 / number of questions elapsed since this question was last seen by the user. If the question has never been seen, this has a default score of 0.
+%\end{compactitem}
 \end{itemize}
 
 
@@ -378,6 +380,8 @@ Once the user has seen all the questions in the unit, QuizCram encourages them t
 % QuizCram highlights on the progressbar the portion of the video that is relevant to answering the current question. For questions generated from in-video quizzes, we highlight the segment of the video that immediately preceded the in-video quiz, as shown in \autoref{fig:figure1}. However, because we can highlight any preceding portion of the video to indicate that it is relevant to the current question, this give us flexibility in question writing and placement: we can place questions where they would fit most naturally. This also enables us to have multiple questions that cover a single segment of video, without confusing users about where the answers to the questions are located.
 
 % For questions generated from in-video quizzes, we highlight the segment of the video that immediately precededs the in-video quiz to indicate that it is where the answer is found, as shown in \autoref{fig:figure1}. However, because we can highlight any preceding portion of the video to indicate that it is relevant to the current question, this also allows us to have more flexibility in question writing and placement: we can place questions where they would fit most naturally, rather than immediately following the section where the answer is covered. This also enables us to have multiple questions that cover a single segment of video, without confusing users about where the answers to the questions are located.
+
+%\pagebreak
 
 \subsection{Directing Attention to Unseen Parts of Videos}
 
@@ -516,15 +520,19 @@ Exam results are shown in \autoref{fig:exam-results}.  QuizCram users performed 
 
 \subsection{Survey Results}
 
-When users were asked to rate satisfaction with the tool on a scale of 1 to 7, the average rating was 5.28 for QuizCram, and 5.17 for in-video quizzes.  61\% said would prefer QuizCram if they wanted to remember material long-term or were preparing for an exam. These improvements were not significant.
+Survey responses after using each tool are shown in \autoref{fig:survey-results}. 61\% said would prefer to use QuizCram if they wanted to remember material long-term or were preparing for an exam. These improvements were not statistically significant.
+
+%When users were asked to rate satisfaction with the tool on a scale of 1 to 7, the average rating was 5.28 for QuizCram, and 5.17 for in-video quizzes.  61\% said would prefer QuizCram if they wanted to remember material long-term or were preparing for an exam. These improvements were not significant.
 
 %Survey feedback showed that users liked QuizCram's question-based timeline of videos, and thought it was helpful for reviewing. However, some users disliked the visual complexity of the interface, and thought that the prominent display of questions distracted them from watching the video.
 
-Survey feedback showed that users liked QuizCram's question-based timeline of videos, and thought it was helpful for reviewing.
+% Survey feedback showed that users liked QuizCram's question-based timeline of videos, and thought it was helpful for reviewing.
+
+Survey feedback showed that users thought QuizCram's features were helpful for reviewing:
 
 \textit{I liked that it picked out the key information I should retain by asking me questions. It helped me decide what to focus on as I watched the video. The chunks were very manageable as well. I liked how it was broken up.}
 
-\textit{It was easy to review the questions and quiz myself multiple times, and ultimately, the repetition aided my understanding of the material.}
+%\textit{It was easy to review the questions and quiz myself multiple times, and ultimately, the repetition aided my understanding of the material.}
 
 %\textit{The video viewing tool gave you the opportunity to learn the material a second time by presenting you the question again out of order (and without the answers). I found that I had to rely on my own recall to answer the questions a second time, and learned the material better.}
 
@@ -533,6 +541,13 @@ Survey feedback showed that users liked QuizCram's question-based timeline of vi
 However, some users thought that the prominent display of questions distracted them from watching the video.
 
 \textit{I did not like the fact that you could answer questions while the video was playing. It made me more focused on answering the questions rather than watching and learning the material.}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\columnwidth]{survey-results}
+\caption{Survey responses showed slight preferences in favor of QuizCram, but they were not statistically significant}
+\label{fig:survey-results}
+\end{figure}
 
 \begin{figure}
 \centering
@@ -609,7 +624,7 @@ Users seeked less on average when using QuizCram, which may partly be because th
 % We were pleased to find that encountering questions in multiple-checkbox form in QuizCram caused users to remember the tested content sufficiently well that they were able to answer it in free-response format a day later. Likewise, we found that it is possible to double the question-to-video ratio in the context of QuizCram. This 
 
 % =============================================================================
-\pagebreak
+%\pagebreak
 
 \section{Conclusion}
 % =============================================================================
